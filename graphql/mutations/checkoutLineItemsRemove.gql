@@ -1,0 +1,22 @@
+mutation checkoutLineItemsRemove($checkoutId: ID!, $lineItemIds: [ID!]!) {
+  checkoutLineItemsRemove(checkoutId: $checkoutId, lineItemIds: $lineItemIds) {
+    checkout {
+      id
+      webUrl
+      currencyCode
+      lineItems(first: 100) {
+        edges {
+          node {
+            id
+            title
+            quantity
+            variant {
+              id
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}

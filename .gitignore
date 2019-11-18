@@ -1,0 +1,6 @@
+node_modules
+public
+dist
+.nuxt
+.env
+static/sw.js

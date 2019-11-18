@@ -1,0 +1,25 @@
+{
+  "name": "frameless",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "deploy": "nuxt build && cd dist && surge"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc17",
+    "@nuxtjs/pwa": "^3.0.0-beta.19",
+    "cookie-universal-nuxt": "^2.0.18",
+    "country-list": "^2.2.0",
+    "dotenv": "^8.2.0",
+    "js-cookie": "^2.2.1",
+    "node-fetch": "^2.6.0",
+    "node-sass": "^4.13.0",
+    "nuxt": "^2.10.2",
+    "nuxt-i18n": "^6.3.1",
+    "sass-loader": "^8.0.0",
+    "sass-mq": "^5.0.1",
+    "vuex-persistedstate": "^2.7.0"
+  }
+}

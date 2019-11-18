@@ -1,0 +1,13 @@
+query collectionByHandle($handle: String!) {
+  collectionByHandle(handle: $handle) {
+    title
+    products(first: 100) {
+      edges {
+        node {
+          title
+          handle
+        }
+      }
+    }
+  }
+}

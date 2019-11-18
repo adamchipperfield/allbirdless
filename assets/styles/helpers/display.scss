@@ -1,0 +1,9 @@
+/**
+ * Helper: Display
+ * -----------------------------------------------------------------------------
+ * Utility classes to hide and show elements based on conditions.
+ *
+ */
+.visually-hidden {
+  @include visually-hidden;
+}

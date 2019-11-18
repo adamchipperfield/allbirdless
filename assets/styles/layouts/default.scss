@@ -1,0 +1,21 @@
+/**
+ * Layouts: Default
+ * -----------------------------------------------------------------------------
+ * The default app layout style entry file.
+ */
+
+/**
+ * Config.
+ */
+@import '../config/grid';
+@import '../config/mixins';
+
+/**
+ * Helpers.
+ */
+@import '../helpers/display';
+
+/**
+ * Base.
+ */
+@import '../base/reset';

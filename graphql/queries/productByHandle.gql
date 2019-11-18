@@ -1,0 +1,38 @@
+query productByHandle($handle: String!) {
+  productByHandle(handle: $handle) {
+    title
+    descriptionHtml
+    variants(first: 100) {
+      edges {
+        node {
+          id
+          title
+          available
+          selectedOptions {
+            name
+            value
+          }
+          presentmentPrices(first: 100) {
+            edges {
+              node {
+                compareAtPrice {
+                  amount
+                  currencyCode
+                }
+                price {
+                  amount
+                  currencyCode
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    options {
+      id
+      name
+      values
+    }
+  }
+}

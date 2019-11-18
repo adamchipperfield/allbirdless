@@ -1,0 +1,9 @@
+query getAllProducts {
+  products(first: 100) {
+    edges {
+      node {
+        handle
+      }
+    }
+  }
+}

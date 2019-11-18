@@ -1,0 +1,45 @@
+query getCustomer($customerAccessToken: String!) {
+  customer(customerAccessToken: $customerAccessToken) {
+    id
+    firstName
+    lastName
+    email
+    addresses(first: 100) {
+      edges {
+        node {
+          id
+          formatted
+          firstName
+          lastName
+          company
+          phone
+          address1
+          address2
+          city
+          company
+          zip
+        }
+      }
+    }
+    orders(first: 100) {
+      edges {
+        node {
+          name
+          orderNumber
+          processedAt
+          lineItems(first: 100) {
+            edges {
+              node {
+                title
+                variant {
+                  title
+                }
+                quantity
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

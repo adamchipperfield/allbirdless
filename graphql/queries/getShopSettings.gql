@@ -1,0 +1,9 @@
+query getShopSettings {
+  shop {
+    currencyCode
+    paymentSettings {
+      enabledCurrencies: enabledPresentmentCurrencies
+    }
+    shipsToCountries
+  }
+}
