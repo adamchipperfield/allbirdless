@@ -16,7 +16,7 @@
 
     li {
       margin-left: 1.5rem;
-      padding: 1.25rem 0;
+      padding: 0.9rem 0;
     }
   }
 
@@ -34,7 +34,19 @@
 
     li {
       margin-right: 1.5rem;
-      padding: 1.25rem 0;
+      padding: 0.9rem 0;
     }
+  }
+
+  &__cart {
+    @include button-reset;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__cart-count {
+    left: 50%;
+    position: absolute;
+    top: 15%;
   }
 }

@@ -1,26 +1,52 @@
 <template>
-  <div class="cart-drawer">
-    <h3>{{ $t('cartDrawer.title') }}</h3>
-    <div
-      v-for="(item, index) in lineItems"
-      :key="index"
-      class="cart-drawer__item"
-    >
-      {{ item.title }} x {{ item.quantity }}
-      <span @click="removeLineItem(item.id)">{{ $t('cartDrawer.lineItems.remove') }}</span>
-    </div>
+  <div
+    class="cart-drawer"
+    :class="{ 'is-active': isActive }"
+  >
+    <div class="cart-drawer__card">
+      <div class="cart-drawer__header">
+        <button
+          class="cart-drawer__close"
+          @click="close"
+        >
+          <span class="visually-hidden">Close cart drawer</span>
+        </button>
+      </div>
 
-    <a
-      v-if="lineItems.length > 0"
-      :href="checkoutUrl"
-    >
-      {{ $t('cartDrawer.checkout') }}
-    </a>
+      <div
+        v-for="(item, index) in lineItems"
+        :key="index"
+        class="cart-drawer__item"
+      >
+        {{ item.title }} x {{ item.quantity }}
+        <span @click="removeLineItem(item.id)">{{ $t('cartDrawer.lineItems.remove') }}</span>
+      </div>
+
+      <a
+        v-if="lineItems.length > 0"
+        :href="checkoutUrl"
+      >
+        {{ $t('cartDrawer.checkout') }}
+      </a>
+    </div>
   </div>
 </template>
 
+<style lang="scss">
+@import '~/assets/styles/components/cart-drawer';
+</style>
+
 <script>
 export default {
+  data() {
+    return {
+      isActive: false,
+    }
+  },
+  mounted() {
+    this.$root.$on('cartDrawer:toggle', () => this.toggle());
+    this.$root.$on('windowOverlay:click', () => this.close());
+  },
   methods: {
 
     /**
@@ -29,6 +55,29 @@ export default {
      */
     removeLineItem(id) {
       this.$store.dispatch('removeLineItem', id);
+    },
+
+    /**
+     * Toggles the cart drawer.
+     */
+    toggle() {
+      return this.isActive ? this.close() : this.open()
+    },
+
+    /**
+     * Set active state.
+     */
+    open() {
+      this.isActive = true;
+      this.$root.$emit('windowOverlay:show');
+    },
+
+    /**
+     * Set closed state.
+     */
+    close() {
+      this.isActive = false;
+      this.$root.$emit('windowOverlay:hide');
     },
   },
   computed: {

@@ -1,0 +1,21 @@
+/**
+ * Components: Window Overlay
+ * -----------------------------------------------------------------------------
+ * Styles for the global window overlay.
+ */
+.window-overlay {
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: 0.3s ease;
+  visibility: hidden;
+  width: 100%;
+
+  &.is-active {
+    opacity: 0.5;
+    visibility: visible;
+  }
+}

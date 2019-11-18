@@ -30,6 +30,29 @@
           {{ $t('account.login.title') }}
         </nuxt-link>
       </li>
+
+      <li>
+        <button
+          class="app-header__cart"
+          @click="toggleCartDrawer"
+        >
+          <img
+            v-show="checkoutCount === 0"
+            alt="Open cart drawer"
+            src="~/assets/icons/icon-cart.svg"
+          >
+
+          <img
+            v-show="checkoutCount > 0"
+            alt="Open cart drawer"
+            src="~/assets/icons/icon-cart-filled.svg"
+          >
+
+          <span class="app-header__cart-count">
+            {{ checkoutCount }}
+          </span>
+        </button>
+      </li>
     </ul>
   </div>
 </template>
@@ -58,6 +81,15 @@ export default {
   },
   components: {
     AppLogo,
+  },
+  methods: {
+
+    /**
+     * Toggles the cart drawer state.
+     */
+    toggleCartDrawer() {
+      this.$root.$emit('cartDrawer:toggle');
+    },
   },
   computed: {
     checkoutUrl() {
