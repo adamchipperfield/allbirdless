@@ -31,9 +31,16 @@ export default {
       { rel: 'preconnect', href: storeUrl },
     ],
   },
+  styleResources: {
+    scss: [
+      '@/assets/styles/config/grid.scss',
+      '@/assets/styles/config/mixins.scss',
+    ],
+  },
   modules: [
     '@nuxtjs/apollo',
     '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
     'cookie-universal-nuxt',
     [
       'nuxt-i18n',

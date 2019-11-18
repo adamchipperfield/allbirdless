@@ -1,15 +1,20 @@
 <template>
-  <div class="site-header">
-    <app-logo />
-    <a :href="checkoutUrl">{{ $t('checkout.title') }} ({{ checkoutCount }})</a>
-
-    <ul>
+  <div class="app-header">
+    <ul class="app-header__nav">
       <li
         v-for="(item, index) in menuItems"
         :key="index"
+        class="app-header__nav-link"
       >
         <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
       </li>
+    </ul>
+
+    <div class="app-header__logo">
+      <app-logo />
+    </div>
+
+    <ul class="app-header__misc">
       <li>
         <nuxt-link
           v-if="customerIsLoggedIn"
@@ -29,6 +34,10 @@
   </div>
 </template>
 
+<style lang="scss">
+@import '~/assets/styles/components/app-header';
+</style>
+
 <script>
 import AppLogo from './AppLogo';
 
@@ -37,11 +46,11 @@ export default {
     return {
       menuItems: [
         {
-          title: 'Home',
-          url: '/',
+          title: 'Men',
+          url: '/collections/mens',
         },
         {
-          title: 'Womens',
+          title: 'Women',
           url: '/collections/womens',
         },
       ],
