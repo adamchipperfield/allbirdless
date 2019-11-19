@@ -70,5 +70,10 @@ export default {
       this.$root.$emit('menuDrawer:closed');
     },
   },
+  watch: {
+    $route() {
+      setTimeout(() => this.close(), 250);
+    },
+  },
 }
 </script>
