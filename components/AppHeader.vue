@@ -1,5 +1,16 @@
 <template>
   <div class="app-header">
+    <div class="app-header__left">
+      <button
+        ref="menuToggle"
+        class="app-header__menu-toggle"
+        :class="{ 'is-active': menuDrawerActive }"
+        @click="handleMenuToggleClick"
+      >
+        <span class="visually-hidden">Toggle menu drawer</span>
+      </button>
+    </div>
+
     <ul class="app-header__nav">
       <li
         v-for="(item, index) in menuItems"
@@ -20,13 +31,14 @@
 
     <ul class="app-header__misc">
       <li>
-        <currency-selector class="app-header__link" />
+        <currency-selector class="app-header__currency-selector" />
       </li>
 
       <li>
         <nuxt-link
           v-if="customerIsLoggedIn"
           to="/account"
+          class="app-header__account"
         >
           <img
             :alt="$t('account.title')"
@@ -37,6 +49,7 @@
         <nuxt-link
           v-else
           to="/account/login"
+          class="app-header__account"
         >
           <img
             :alt="$t('account.login.title')"
@@ -82,6 +95,7 @@ import CurrencySelector from './CurrencySelector';
 export default {
   data() {
     return {
+      menuDrawerActive: false,
       menuItems: [
         {
           title: 'Men',
@@ -98,6 +112,15 @@ export default {
     AppLogo,
     CurrencySelector,
   },
+  mounted() {
+    this.$root.$on('menuDrawer:closed', () => {
+      this.menuDrawerActive = false;
+    });
+
+    this.$root.$on('menuDrawer:opened', () => {
+      this.menuDrawerActive = true;
+    });
+  },
   methods: {
 
     /**
@@ -105,6 +128,14 @@ export default {
      */
     toggleCartDrawer() {
       this.$root.$emit('cartDrawer:toggle');
+    },
+
+    /**
+     * Handles the menu toggle click event.
+     */
+    handleMenuToggleClick() {
+      this.$refs.menuToggle.classList.toggle('is-active');
+      this.$root.$emit('menuDrawer:toggle');
     },
   },
   computed: {

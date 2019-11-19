@@ -61,7 +61,7 @@ export default {
      * Toggles the cart drawer.
      */
     toggle() {
-      return this.isActive ? this.close() : this.open()
+      return this.isActive ? this.close() : this.open();
     },
 
     /**
@@ -69,6 +69,7 @@ export default {
      */
     open() {
       this.isActive = true;
+      this.$root.$emit('menuDrawer:close');
       this.$root.$emit('windowOverlay:show');
     },
 

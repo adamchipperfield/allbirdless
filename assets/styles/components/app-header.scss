@@ -6,13 +6,70 @@
 .app-header {
   align-items: center;
   background-color: $COLOR_BACKGROUND_WHITE;
+  box-shadow: rgba($COLOR_BACKGROUND_BLACK, 0.09) 0 2px 24px 0;
   display: flex;
   justify-content: space-between;
+  position: relative;
   width: 100%;
+  z-index: 12;
+
+  &__left {
+    flex: 1 0 0;
+    padding-left: 1.125rem;
+  }
+
+  &__menu-toggle {
+    $menu_toggle: &;
+    @include button-reset;
+    background-color: $COLOR_BACKGROUND_DARK;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: all 0.1s ease;
+    width: 22px;
+    
+    &::before {
+      background-color: $COLOR_BACKGROUND_DARK;
+      content: '';
+      display: block;
+      height: 2px;
+      left: 0;
+      position: absolute;
+      top: -8px;
+      transition: all 0.1s ease;
+      width: 22px;
+    }
+
+    &::after {
+      background-color: $COLOR_BACKGROUND_DARK;
+      content: '';
+      display: block;
+      height: 2px;
+      left: 0;
+      position: absolute;
+      top: 8px;
+      transition: all 0.1s ease;
+      width: 22px;
+    }
+
+    &.is-active {
+      background-color: transparent;
+
+      &::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+    }
+  }
 
   &__nav {
     @include list-reset;
-    display: flex;
+    display: none;
     flex: 1 0 0;
 
     li {
@@ -45,6 +102,11 @@
     }
   }
 
+  &__account,
+  &__currency-selector {
+    display: none;
+  }
+
   &__link {
     border-bottom: 2px solid transparent;
     font-size: 0.75rem;
@@ -71,5 +133,20 @@
     left: 50%;
     position: absolute;
     top: 23%;
+  }
+
+  @include mq($from: medium) {
+    &__left {
+      display: none;
+    }
+
+    &__nav {
+      display: flex;
+    }
+
+    &__account,
+    &__currency-selector {
+      display: block;
+    }
   }
 }
