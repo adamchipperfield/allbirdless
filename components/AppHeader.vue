@@ -4,9 +4,13 @@
       <li
         v-for="(item, index) in menuItems"
         :key="index"
-        class="app-header__nav-link"
       >
-        <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
+        <nuxt-link
+          :to="item.url"
+          class="app-header__link"
+        >
+          {{ item.title }}
+        </nuxt-link>
       </li>
     </ul>
 
@@ -16,18 +20,28 @@
 
     <ul class="app-header__misc">
       <li>
+        <currency-selector class="app-header__link" />
+      </li>
+
+      <li>
         <nuxt-link
           v-if="customerIsLoggedIn"
           to="/account"
         >
-          {{ $t('account.title') }}
+          <img
+            :alt="$t('account.title')"
+            src="~/assets/icons/icon-user.svg"
+          >
         </nuxt-link>
 
         <nuxt-link
           v-else
           to="/account/login"
         >
-          {{ $t('account.login.title') }}
+          <img
+            :alt="$t('account.login.title')"
+            src="~/assets/icons/icon-user.svg"
+          >
         </nuxt-link>
       </li>
 
@@ -63,6 +77,7 @@
 
 <script>
 import AppLogo from './AppLogo';
+import CurrencySelector from './CurrencySelector';
 
 export default {
   data() {
@@ -81,6 +96,7 @@ export default {
   },
   components: {
     AppLogo,
+    CurrencySelector,
   },
   methods: {
 

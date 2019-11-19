@@ -37,14 +37,25 @@
     display: flex;
     flex: 1 0 0;
     justify-content: flex-end;
+    padding-right: 1.125rem;
 
     li {
-      font-size: 0.75rem;
-      font-weight: $WEIGHT_BOLD;
-      letter-spacing: $LETTER_SPACING_LINK;
-      margin-right: 1.5rem;
+      margin-left: 1.125rem;
       padding: 0.9rem 0;
-      text-transform: uppercase;
+    }
+  }
+
+  &__link {
+    border-bottom: 2px solid transparent;
+    font-size: 0.75rem;
+    font-weight: $WEIGHT_BOLD;
+    letter-spacing: $LETTER_SPACING_LINK;
+    padding-bottom: 0.25rem;
+    text-transform: uppercase;
+    transition: border-bottom-color 0.1s ease;
+
+    &:hover {
+      border-bottom-color: $COLOR_BORDER_DARK;
     }
   }
 
