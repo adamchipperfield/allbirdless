@@ -26,6 +26,7 @@ export default {
     title: 'Frameless',
     meta: [
       { name: 'description', content: 'Headless Shopify implementation.' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
     ],
     link: [
       { rel: 'preconnect', href: storeUrl },
