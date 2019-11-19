@@ -37,7 +37,15 @@
         </select>
 
         <div v-if="optionIsSwatch(option)">
-          <p class="product-form__label">{{ $t('product.form.selectOption').replace('#option#', option.name) }}:</p>
+          <p class="product-form__label">
+            {{ $t('product.form.selectOption').replace('#option#', option.name) }}:
+            <span
+              v-if="option.name !== 'Size'"
+              class="product-form__label-value"
+            >
+              {{ getOptionValue(option) }}
+            </span>
+          </p>
 
           <div class="swatch-grid">
             <div
@@ -51,7 +59,7 @@
                 class="swatch-grid__radio"
                 type="radio"
                 :name="option.name"
-                :id="optionIndex"
+                :id="`${index}-${optionIndex}`"
                 :value="value"
                 :data-index="index"
                 :checked="optionIndex === 0"
@@ -61,7 +69,7 @@
               <label
                 class="swatch-grid__label"
                 :style="[ option.name !== 'Size' ? `background-color: ${value.replace(' ', '').toLowerCase()}` : '' ]"
-                :for="optionIndex"
+                :for="`${index}-${optionIndex}`"
               >
                 {{ value }}
               </label>
@@ -126,6 +134,7 @@ export default {
   data() {
     return {
       activeVariant: {},
+      options: {},
     }
   },
   components: {
@@ -151,6 +160,16 @@ export default {
      * Handles the option selector event.
      */
     handleOptionSelector() {
+      this.$refs.optionSelector.forEach((selector) => {
+        if (selector.type === 'radio') {
+          if (selector.checked) {
+            this.options[selector.name] = selector.value;
+          }
+        } else {
+          this.options[selector.name] = selector.value;
+        }
+      });
+
       this.activeVariant = this.getSelectedVariant();
       this.$refs.variantSelector.value = this.getSelectedVariant().id;
       this.$refs.quantityInput.value = 1;
@@ -218,6 +237,14 @@ export default {
       const name = option.name.toLowerCase();
 
       return types.includes(name);
+    },
+
+    /**
+     * Gets the value for a specified option.
+     * @param {object} option - The option object.
+     */
+    getOptionValue(option) {
+      return this.options[option.name] ? this.options[option.name] : option.values[0];
     },
   },
   computed: {
