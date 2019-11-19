@@ -6,6 +6,7 @@ export default {
       addToCart: 'Add to cart',
       addingToCart: 'Adding to cart...',
       outOfStock: 'Out of stock',
+      selectOption: 'Select #option#',
     },
   },
   checkout: {

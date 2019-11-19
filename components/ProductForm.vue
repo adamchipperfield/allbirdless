@@ -14,7 +14,7 @@
     >
     </div>
 
-    <div v-if="product.options.length > 1">
+    <div v-if="variants.length > 1">
       <div
         v-for="(option, index) in product.options"
         :key="index"
@@ -37,30 +37,34 @@
         </select>
 
         <div v-if="optionIsSwatch(option)">
+          <p class="product-form__label">{{ $t('product.form.selectOption').replace('#option#', option.name) }}:</p>
+
           <div class="swatch-grid">
             <div
               class="swatch-grid__item"
+              :class="[ option.name === 'Size' ? 'swatch-grid__item--text' : '' ]"
               v-for="(value, optionIndex) in option.values"
               :key="optionIndex"
             >
-              <label
-                class="swatch-grid__label"
-                :for="index"
-              >
-                {{ value }}
-              </label>
-
               <input
                 ref="optionSelector"
                 class="swatch-grid__radio"
                 type="radio"
                 :name="option.name"
-                :id="index"
+                :id="optionIndex"
                 :value="value"
                 :data-index="index"
                 :checked="optionIndex === 0"
                 @change="handleOptionSelector"
               >
+
+              <label
+                class="swatch-grid__label"
+                :style="[ option.name !== 'Size' ? `background-color: ${value.replace(' ', '').toLowerCase()}` : '' ]"
+                :for="optionIndex"
+              >
+                {{ value }}
+              </label>
             </div>
           </div>
         </div>
@@ -107,6 +111,10 @@
     </button>
   </div>
 </template>
+
+<style lang="scss">
+@import '~/assets/styles/components/product-form';
+</style>
 
 <script>
 import ProductPrice from '../components/ProductPrice';

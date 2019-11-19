@@ -1,0 +1,76 @@
+/**
+ * Components: Swatch Grid
+ * -----------------------------------------------------------------------------
+ * Re-usable swatch grid component.
+ */
+.swatch-grid {
+  $parent: &;
+  display: flex;
+  margin: 1.75rem 0;
+
+  &__item {
+    margin-right: 1rem;
+
+    &--text {
+      margin-right: 0.5rem;
+
+      #{$parent}__label {
+        background-color: transparent;
+        border-color: $COLOR_BACKGROUND_DARK;
+        border-radius: 2px;
+        height: 45px;
+        font-size: 0.65rem;
+        line-height: $LINE_HEIGHT_META;
+        padding: 1.25rem 1rem 1rem;
+        width: 45px;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      #{$parent}__radio:checked + #{$parent}__label {
+        background-color: $COLOR_BACKGROUND_DARK;
+        color: $COLOR_TEXT_SECONDARY;
+      }
+    }
+  }
+
+  &__label {
+    align-items: center;
+    background-color: $COLOR_BACKGROUND_WHITE;
+    border: 1px solid $COLOR_BORDER_LIGHT;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    font-size: 0;
+    height: 30px;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    width: 30px;
+
+    &::before {
+      border: 2px solid transparent;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 38px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 38px;
+    }
+  }
+
+  &__radio {
+    @include visually-hidden;
+
+    &:checked + #{$parent}__label {
+      &::before {
+        border-color: $COLOR_BACKGROUND_DARK;
+      }
+    }
+  }
+}
