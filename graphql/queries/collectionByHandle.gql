@@ -1,6 +1,10 @@
 query collectionByHandle($handle: String!) {
   collectionByHandle(handle: $handle) {
     title
+    descriptionHtml
+    image {
+      originalSrc
+    },
     products(first: 100) {
       edges {
         node {

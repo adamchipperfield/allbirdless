@@ -1,0 +1,56 @@
+/**
+ * Pages: Collection
+ * -----------------------------------------------------------------------------
+ * Entry styles for the collection template.
+ */
+.template-collection {
+  &__image {
+    background-position: center;
+    background-size: cover;
+    padding-top: 50%;
+    width: 100%;
+  }
+
+  &__header {
+    background-color: $COLOR_BACKGROUND_DARK;
+    color: $COLOR_TEXT_SECONDARY;
+    text-align: center;
+  }
+
+  &__intro {
+    padding: 1.9rem 2.25rem;
+  }
+
+  &__title {
+    margin: 0 0 0.75rem 0;
+  }
+
+  &__description {
+    line-height: $LINE_HEIGHT_BODY;
+  }
+
+  @include mq($from: medium) {
+    &__header {
+      display: flex;
+    }
+
+    &__image {
+      padding-top: 34%;
+    }
+
+    &__intro {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 700px;
+      padding: 3rem 4.5rem;
+    }
+  }
+
+  @include mq($from: large) {
+    &__title {
+      font-size: 3rem;
+    }
+  }
+}

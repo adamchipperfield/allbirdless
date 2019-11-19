@@ -1,6 +1,23 @@
 <template>
   <div class="template-collection">
-    <h1>{{ collection.title }}</h1>
+    <header class="template-collection__header">
+      <div
+        class="template-collection__image"
+        :style="`background-image: url('${collection.image.originalSrc}')`"
+      >
+      </div>
+
+      <div class="template-collection__intro">
+        <h1 class="template-collection__title">{{ collection.title }}</h1>
+
+        <div
+          v-if="collection.descriptionHtml"
+          v-html="collection.descriptionHtml"
+          class="template-collection__description"
+        >
+        </div>
+      </div>
+    </header>
 
     <product-card
       v-for="(product, index) in products"
@@ -10,6 +27,10 @@
     </product-card>
   </div>
 </template>
+
+<style lang="scss">
+@import '~/assets/styles/pages/collection';
+</style>
 
 <script>
 import collectionByHandle from '../../graphql/queries/collectionByHandle';
