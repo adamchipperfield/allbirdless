@@ -1,0 +1,32 @@
+/**
+ * Config: Fonts
+ * -----------------------------------------------------------------------------
+ * Defines the font face imports.
+ */
+@font-face {
+  font-family: 'HurmeGeometricSans3';
+  font-style: normal;
+  font-weight: 400;
+  src: url('~assets/fonts/HurmeGeometricSans3-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HurmeGeometricSans3';
+  font-style: normal;
+  font-weight: 600;
+  src: url('~assets/fonts/HurmeGeometricSans3-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HurmeGeometricSans3';
+  font-style: italic;
+  font-weight: 600;
+  src: url('~assets/fonts/HurmeGeometricSans3-SemiBoldObl.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HurmeGeometricSans3';
+  font-style: normal;
+  font-weight: 700;
+  src: url('~assets/fonts/HurmeGeometricSans3-Bold.woff2') format('woff2');
+}
