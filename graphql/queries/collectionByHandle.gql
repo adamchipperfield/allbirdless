@@ -15,7 +15,7 @@ query collectionByHandle($handle: String!) {
             edges {
               node {
                 altText
-                originalSrc
+                transformedSrc(maxWidth: 271)
               }
             }
           }

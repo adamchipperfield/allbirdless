@@ -7,7 +7,7 @@
       <img
         v-if="hasImages"
         :alt="[ product.images.edges[0].node.altText ? product.images.edges[0].node.altText : product.title ]"
-        :src="product.images.edges[0].node.originalSrc"
+        :src="product.images.edges[0].node.transformedSrc"
       >
     </nuxt-link>
 
