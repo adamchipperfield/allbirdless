@@ -36,6 +36,7 @@ export default {
       '@/assets/styles/config/grid.scss',
       '@/assets/styles/config/mixins.scss',
       '@/assets/styles/config/fonts.scss',
+      '@/assets/styles/config/colors.scss',
     ],
   },
   modules: [
