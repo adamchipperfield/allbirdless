@@ -19,12 +19,19 @@
       </div>
     </header>
 
-    <product-card
-      v-for="(product, index) in products"
-      :key="index"
-      :product="product"
-    >
-    </product-card>
+    <div class="template-collection__grid">
+      <div class="container">
+        <div class="row">
+          <product-card
+            v-for="(product, index) in products"
+            :key="index"
+            :product="product"
+            class="col xs6 m3"
+          >
+          </product-card>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
