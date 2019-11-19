@@ -110,6 +110,7 @@
   
     <button
       ref="addToCart"
+      class="button button--block"
       name="addToCart"
       type="button"
       :disabled="activeVariant.available === false"

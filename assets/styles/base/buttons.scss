@@ -1,0 +1,40 @@
+/**
+ * Base: Buttons
+ * -----------------------------------------------------------------------------
+ * Global styles for button elements.
+ */
+.button {
+  @include button-reset;
+  background-color: $COLOR_BACKGROUND_DARK;
+  border: 2px solid $COLOR_BACKGROUND_DARK;
+  color: $COLOR_TEXT_SECONDARY;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: $WEIGHT_BOLD;
+  letter-spacing: $LETTER_SPACING_LINK;
+  line-height: $LINE_HEIGHT_BODY;
+  padding: 0.85rem 1.125rem;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &:disabled {
+    background-color: rgba($COLOR_BACKGROUND_DARK, 0.2);
+    border-color: transparent;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: rgba($COLOR_BACKGROUND_DARK, 0.4);
+      color: $COLOR_TEXT_SECONDARY;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: $COLOR_TEXT_PRIMARY;
+  }
+}
