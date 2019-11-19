@@ -2,6 +2,14 @@ query productByHandle($handle: String!) {
   productByHandle(handle: $handle) {
     title
     descriptionHtml
+    images(first: 100) {
+      edges {
+        node {
+          altText
+          transformedSrc(maxWidth: 650)
+        }
+      }
+    }
     variants(first: 100) {
       edges {
         node {
