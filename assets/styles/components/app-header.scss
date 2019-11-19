@@ -5,6 +5,7 @@
  */
 .app-header {
   align-items: center;
+  background-color: $COLOR_BACKGROUND_WHITE;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -15,8 +16,12 @@
     flex: 1 0 0;
 
     li {
+      font-size: 0.75rem;
+      font-weight: $WEIGHT_BOLD;
+      letter-spacing: $LETTER_SPACING_LINK;
       margin-left: 1.5rem;
       padding: 0.9rem 0;
+      text-transform: uppercase;
     }
   }
 
@@ -28,13 +33,18 @@
 
   &__misc {
     @include list-reset;
+    align-items: center;
     display: flex;
     flex: 1 0 0;
     justify-content: flex-end;
 
     li {
+      font-size: 0.75rem;
+      font-weight: $WEIGHT_BOLD;
+      letter-spacing: $LETTER_SPACING_LINK;
       margin-right: 1.5rem;
       padding: 0.9rem 0;
+      text-transform: uppercase;
     }
   }
 
@@ -45,8 +55,10 @@
   }
 
   &__cart-count {
+    font-size: 0.75rem;
+    font-weight: $WEIGHT_BOLD;
     left: 50%;
     position: absolute;
-    top: 15%;
+    top: 23%;
   }
 }

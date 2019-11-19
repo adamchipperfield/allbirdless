@@ -37,6 +37,7 @@ export default {
       '@/assets/styles/config/mixins.scss',
       '@/assets/styles/config/fonts.scss',
       '@/assets/styles/config/colors.scss',
+      '@/assets/styles/config/typography.scss',
     ],
   },
   modules: [
