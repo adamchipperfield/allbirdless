@@ -23,9 +23,9 @@ const storeAccess = process.env.SHOPIFY_ACCESS;
  */
 export default {
   head: {
-    title: 'Frameless',
+    title: 'Allbirds',
     meta: [
-      { name: 'description', content: 'Headless Shopify implementation.' },
+      { name: 'description', content: 'The world’s most comfortable shoes made from premium natural materials go perfectly with your everyday escapades.' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
     ],
     link: [
