@@ -26,7 +26,7 @@
             v-for="(product, index) in products"
             :key="index"
             :product="product"
-            class="col xs6 m3"
+            class="col xs6 m4 l3"
           >
           </product-card>
         </div>

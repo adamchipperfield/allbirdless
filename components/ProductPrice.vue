@@ -1,6 +1,7 @@
 <template>
   <div class="product-price">
-    {{ formatPrice(activePrice.price.amount) }}
+    {{ formatPrice(activePrice.amount) }}
+    <span v-if="label">{{ label }}</span>
   </div>
 </template>
 
@@ -9,6 +10,7 @@ export default {
   props: {
     currency: String,
     presentmentPrices: Object,
+    label: String,
   },
   methods: {
     formatPrice(price) {
@@ -17,8 +19,8 @@ export default {
   },
   computed: {
     activePrice() {
-      const prices = this.presentmentPrices.edges.map((item) => item.node);
-      return prices.find((item) => item.price.currencyCode === this.currency);
+      const prices = this.presentmentPrices.edges.map((item) => item.node.price);
+      return prices.find((item) => item.currencyCode === this.currency);
     },
   },
 }

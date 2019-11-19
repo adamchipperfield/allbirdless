@@ -10,6 +10,25 @@ query collectionByHandle($handle: String!) {
         node {
           title
           handle
+          tags
+          images(first: 100) {
+            edges {
+              node {
+                altText
+                originalSrc
+              }
+            }
+          }
+          presentmentPriceRanges(first: 100) {
+            edges {
+              node {
+                price: minVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+            }
+          }
         }
       }
     }

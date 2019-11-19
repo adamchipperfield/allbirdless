@@ -30,7 +30,7 @@
   }
 
   &__grid {
-    margin-top: 1.5rem;
+    margin: 1.5rem 0;
   }
 
   @include mq($from: medium) {
@@ -52,7 +52,7 @@
     }
 
     &__grid {
-      margin-top: 3.4rem;
+      margin: 3.4rem 0;
     }
   }
 
