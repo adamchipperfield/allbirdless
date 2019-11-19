@@ -9,6 +9,10 @@
   </div>
 </template>
 
+<style lang="scss">
+@import '~/assets/styles/components/product-gallery';
+</style>
+
 <script>
 export default {
   props: {

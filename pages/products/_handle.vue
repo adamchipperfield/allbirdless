@@ -1,16 +1,22 @@
 <template>
   <div class="template-product">
-    <div class="row">
-      <div class="col xs12 m6">
-        <product-gallery :images="images" />
-      </div>
+    <div class="template-product__container">
+      <product-gallery
+        class="template-product__gallery"
+        :images="images"
+      />
 
-      <div class="col xs12 m6">
-        <product-form :product="product" />
-      </div>
+      <product-form
+        class="template-product__form"
+        :product="product"
+      />
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@import '~/assets/styles/pages/product';
+</style>
 
 <script>
 import productByHandle from '../../graphql/queries/productByHandle';

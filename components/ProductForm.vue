@@ -78,14 +78,16 @@
       </select>
     </div>
 
-    <label for="Quantity">{{ $t('product.form.quantity') }}</label>
-    <input
-      id="Quantity"
-      ref="quantityInput"
-      name="quantity"
-      type="number"
-      value="1"
-    >
+    <div class="visually-hidden">
+      <label for="Quantity">{{ $t('product.form.quantity') }}</label>
+      <input
+        id="Quantity"
+        ref="quantityInput"
+        name="quantity"
+        type="number"
+        value="1"
+      >
+    </div>
   
     <button
       ref="addToCart"
