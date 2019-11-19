@@ -8,6 +8,7 @@
 
   &__container {
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
     max-width: 970px;
     padding: 0.75rem 0;
@@ -20,6 +21,13 @@
   }
 
   &__form {
+    padding: 0 1rem;
     width: 100%;
+  }
+
+  @include mq($from: medium) {
+    &__container {
+      flex-direction: row;
+    }
   }
 }
