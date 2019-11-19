@@ -3,9 +3,16 @@
     <h1>{{ product.title }}</h1>
 
     <product-price
+      class="product-form__price"
       :presentmentPrices="variants[0].presentmentPrices"
       :currency="$store.state.checkout.currencyCode"
     />
+
+    <div
+      class="product-form__description"
+      v-html="product.descriptionHtml"
+    >
+    </div>
 
     <div v-if="product.options.length > 1">
       <div
