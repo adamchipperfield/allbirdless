@@ -33,12 +33,15 @@ export default {
     getSections() {
       const sections = [];
 
-      this.entries.forEach((entry) => {
+      this.entries.forEach(async (entry) => {
+        const componentName = entry.id.charAt(0).toUpperCase() + entry.id.slice(1);
+
         sections.push({
-          component: () => import(`~/components/content/${entry.id}.vue`),
+          component: () => import(`~/components/content/${componentName}.vue`),
           fields: entry.fields,
         });
       });
+
 
       return sections;
     },
