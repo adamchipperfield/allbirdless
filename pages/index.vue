@@ -1,15 +1,12 @@
 <template>
   <div>
-    <section
+    <component
       v-for="(section, index) in getSections"
       :key="index"
+      :is="section.component"
+      :fields="section.fields"
     >
-      <component
-        :is="section.component"
-        :fields="section.fields"
-      >
-      </component>
-    </section>
+    </component>
   </div>
 </template>
 
@@ -41,7 +38,6 @@ export default {
           fields: entry.fields,
         });
       });
-
 
       return sections;
     },
