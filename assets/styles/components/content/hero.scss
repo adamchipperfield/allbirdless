@@ -1,0 +1,15 @@
+/**
+ * Components: Hero
+ * -----------------------------------------------------------------------------
+ * Hero banner section styling.
+ */
+.hero {
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  justify-content: flex-end;
+  padding: 3rem;
+}

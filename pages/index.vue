@@ -4,7 +4,7 @@
       v-for="(section, index) in getSections"
       :key="index"
       :is="section.component"
-      :fields="section.fields"
+      :entry="section.entry"
     >
     </component>
   </div>
@@ -15,15 +15,13 @@ import contentful from '../plugins/contentful';
 
 export default {
   async asyncData() {
-    const client = await contentful.getEntry('4o6g6OxJzcJP9bpvk2u1sW');
+    const client = await contentful.getEntries({
+      'sys.id': '4o6g6OxJzcJP9bpvk2u1sW',
+      include: 2,
+    });
 
     return {
-      entries: client.fields.content.map((item) => {
-        return {
-          id: item.sys.contentType.sys.id,
-          fields: item.fields,
-        }
-      }),
+      entries: client.items[0].fields.content,
     }
   },
   computed: {
@@ -31,11 +29,12 @@ export default {
       const sections = [];
 
       this.entries.forEach(async (entry) => {
-        const componentName = entry.id.charAt(0).toUpperCase() + entry.id.slice(1);
+        const entryId = entry.sys.contentType.sys.id;
+        const componentName = entryId.charAt(0).toUpperCase() + entryId.slice(1);
 
         sections.push({
           component: () => import(`~/components/content/${componentName}.vue`),
-          fields: entry.fields,
+          entry,
         });
       });
 
