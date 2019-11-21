@@ -16,6 +16,20 @@ mutation checkoutLineItemsAdd($checkoutId: ID!, $lineItems: [CheckoutLineItemInp
               image {
                 transformedSrc(maxHeight: 100, maxWidth: 100, crop: CENTER)
               }
+              presentmentPrices(first: 100) {
+                edges {
+                  node {
+                    compareAtPrice {
+                      amount
+                      currencyCode
+                    }
+                    price {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
+              }
             }
           }
         }

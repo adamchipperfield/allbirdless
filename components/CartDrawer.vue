@@ -28,6 +28,14 @@
           <p class="cart-drawer__item-title">{{ item.title }}</p>
           <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
 
+          <div class="cart-drawer__item-footer">
+            <product-price
+              class="cart-drawer__item-price"
+              :presentmentPrices="item.variant.presentmentPrices"
+              :currency="$store.state.checkout.currencyCode"
+            />
+          </div>
+
           <span
             class="cart-drawer__item-remove"
             @click="removeLineItem(item.id)"
@@ -52,11 +60,16 @@
 </style>
 
 <script>
+import ProductPrice from '~/components/ProductPrice';
+
 export default {
   data() {
     return {
       isActive: false,
     }
+  },
+  components: {
+    ProductPrice,
   },
   mounted() {
     this.$root.$on('cartDrawer:toggle', () => this.toggle());
