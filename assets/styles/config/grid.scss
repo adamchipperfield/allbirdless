@@ -109,6 +109,11 @@ $ELEMENT_BOTTOM_MARGIN: 1rem !default;
     margin-top: 0;
   }
 
+  &.flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &::after {
     clear: both;
     content: '';

@@ -7,6 +7,7 @@
   @include button-reset;
   background-color: $COLOR_BACKGROUND_DARK;
   border: 2px solid $COLOR_BACKGROUND_DARK;
+  border-radius: 2px;
   color: $COLOR_TEXT_SECONDARY;
   cursor: pointer;
   font-size: 0.9rem;
@@ -17,7 +18,17 @@
   text-transform: uppercase;
   transition: all 0.2s ease;
 
-  &--block {
+  &#{&}--outline {
+    background-color: transparent;
+    color: $COLOR_TEXT_PRIMARY;
+
+    &:hover {
+      background-color: $COLOR_BACKGROUND_DARK;
+      color: $COLOR_TEXT_SECONDARY;
+    }
+  }
+
+  &#{&}--block {
     display: block;
     width: 100%;
   }
