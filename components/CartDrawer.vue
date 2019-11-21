@@ -51,9 +51,23 @@
       </div>
     </div>
 
-    <div class="cart-drawer__footer">
+    <div
+      v-if="lineItems.length > 0"
+      class="cart-drawer__footer"
+    >
+      <div class="cart-drawer__summary">
+        <div class="cart-drawer__total">
+          <span class="cart-drawer__total-label">Subtotal</span>
+          <span class="cart-drawer__total-value">{{ checkoutSubtotal }}</span>
+        </div>
+
+        <div class="cart-drawer__total">
+          <span class="cart-drawer__total-label">Shipping</span>
+          <span class="cart-drawer__total-value">FREE</span>
+        </div>
+      </div>
+
       <a
-        v-if="lineItems.length > 0"
         :href="checkoutUrl"
         class="button button--block"
       >
@@ -131,6 +145,15 @@ export default {
   computed: {
     checkoutUrl() {
       return this.$store.state.checkout ? this.$store.state.checkout.webUrl : '';
+    },
+    checkoutSubtotal() {
+      const subtotal = this.$store.state.checkout.lineItemsSubtotalPrice;
+
+      if (!subtotal) {
+        return;
+      }
+
+      return new Intl.NumberFormat('en-GB', { style: 'currency', currency: subtotal.currencyCode }).format(subtotal.amount);
     },
     lineItems() {
       return this.$store.state.checkout ? this.$store.state.checkout.lineItems.edges.map((item) => item.node) : [];

@@ -3,6 +3,10 @@ mutation checkoutLineItemsRemove($checkoutId: ID!, $lineItemIds: [ID!]!) {
     checkout {
       id
       webUrl
+      lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
       currencyCode
       lineItems(first: 100) {
         edges {

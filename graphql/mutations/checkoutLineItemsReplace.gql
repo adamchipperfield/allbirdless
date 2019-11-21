@@ -3,6 +3,10 @@ mutation checkoutLineItemsReplace($lineItems: [CheckoutLineItemInput!]!, $checko
     checkout {
       id
       webUrl
+      lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
       currencyCode
       lineItems(first: 100) {
         edges {

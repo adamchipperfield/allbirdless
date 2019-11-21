@@ -3,6 +3,10 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
     checkout {
       id
       webUrl
+      lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
       currencyCode
       lineItems(first: 100) {
         edges {
@@ -13,6 +17,23 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
             variant {
               id
               title
+              image {
+                transformedSrc(maxHeight: 100, maxWidth: 100, crop: CENTER)
+              }
+              presentmentPrices(first: 100) {
+                edges {
+                  node {
+                    compareAtPrice {
+                      amount
+                      currencyCode
+                    }
+                    price {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
+              }
             }
           }
         }

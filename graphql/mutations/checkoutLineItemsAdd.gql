@@ -3,6 +3,10 @@ mutation checkoutLineItemsAdd($checkoutId: ID!, $lineItems: [CheckoutLineItemInp
     checkout {
       id
       webUrl
+      lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
       currencyCode
       lineItems(first: 100) {
         edges {
