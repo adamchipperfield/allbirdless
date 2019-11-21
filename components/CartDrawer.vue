@@ -3,7 +3,7 @@
     class="cart-drawer"
     :class="{ 'is-active': isActive }"
   >
-    <div class="cart-drawer__card">
+    <div class="cart-drawer__body">
       <div class="cart-drawer__header">
         <button
           class="cart-drawer__close"
@@ -44,10 +44,13 @@
           </span>
         </div>
       </div>
+    </div>
 
+    <div class="cart-drawer__footer">
       <a
         v-if="lineItems.length > 0"
         :href="checkoutUrl"
+        class="button button--block"
       >
         {{ $t('cartDrawer.checkout') }}
       </a>
