@@ -13,6 +13,9 @@ mutation checkoutLineItemsAdd($checkoutId: ID!, $lineItems: [CheckoutLineItemInp
             variant {
               id
               title
+              image {
+                transformedSrc(maxHeight: 100, maxWidth: 100, crop: CENTER)
+              }
             }
           }
         }

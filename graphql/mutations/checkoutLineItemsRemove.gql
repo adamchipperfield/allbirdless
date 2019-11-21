@@ -13,6 +13,9 @@ mutation checkoutLineItemsRemove($checkoutId: ID!, $lineItemIds: [ID!]!) {
             variant {
               id
               title
+              image {
+                transformedSrc(maxHeight: 100, maxWidth: 100, crop: CENTER)
+              }
             }
           }
         }

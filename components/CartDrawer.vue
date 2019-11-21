@@ -18,8 +18,23 @@
         :key="index"
         class="cart-drawer__item"
       >
-        {{ item.title }} x {{ item.quantity }}
-        <span @click="removeLineItem(item.id)">{{ $t('cartDrawer.lineItems.remove') }}</span>
+        <img
+          v-if="item.variant.image"
+          :src="item.variant.image.transformedSrc"
+          :alt="item.title"
+        >
+
+        <div class="cart-drawer__item-details">
+          <p class="cart-drawer__item-title">{{ item.title }}</p>
+          <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
+
+          <span
+            class="cart-drawer__item-remove"
+            @click="removeLineItem(item.id)"
+          >
+            <span class="visually-hidden">{{ $t('cartDrawer.lineItems.remove') }}</span>
+          </span>
+        </div>
       </div>
 
       <a

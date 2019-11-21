@@ -49,6 +49,58 @@
     }
   }
 
+  &__item {
+    display: flex;
+    margin: 1.5rem 0;
+    padding-right: 1rem;
+    position: relative;
+  }
+
+  &__item-details {
+    padding-left: 1.5rem;
+  }
+
+  &__item-title {
+    font-size: 0.9rem;
+    font-weight: $WEIGHT_SEMIBOLD;
+    margin: 0 0 0.125rem 0;
+  }
+
+  &__item-variant {
+    font-size: 0.8rem;
+    margin: 0 0 0.125rem 0;
+  }
+
+  &__item-remove {
+    cursor: pointer;
+    display: block;
+    height: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 12px;
+
+    &::before,
+    &::after {
+      background-color: $COLOR_BACKGROUND_DARK;
+      content: '';
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 2px;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
   &.is-active {
     transform: none;
   }
