@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import checkoutCreate from '../graphql/mutations/checkoutCreate';
 import checkoutLineItemsAdd from '../graphql/mutations/checkoutLineItemsAdd';
 import checkoutLineItemsRemove from '../graphql/mutations/checkoutLineItemsRemove';
+import checkoutLineItemsReplace from '../graphql/mutations/checkoutLineItemsReplace';
 import checkoutCustomerAssociateV2 from '../graphql/mutations/checkoutCustomerAssociateV2';
 import checkoutCustomerDisassociateV2 from '../graphql/mutations/checkoutCustomerDisassociateV2';
 import customerAccessTokenCreate from '../graphql/mutations/customerAccessTokenCreate';
@@ -221,6 +222,30 @@ export const actions = {
     })
       .then(({ data }) => {
         const checkout = data.checkoutLineItemsRemove.checkout;
+        commit('SET_CHECKOUT', checkout);
+      });
+  },
+
+  /**
+   * Updates the line item quantity.
+   * @param {object} param0 - The context.
+   * @param {object} param1 - The line item.
+   */
+  updateLineItemQuantity({ state, commit }, { variantId, quantity }) {
+    const client = this.app.apolloProvider.defaultClient;
+
+    return client.mutate({
+      mutation: checkoutLineItemsReplace,
+      variables: {
+        checkoutId: state.checkout.id,
+        lineItems: [{
+          variantId,
+          quantity: parseInt(quantity, 10),
+        }],
+      },
+    })
+      .then(({ data }) => {
+        const checkout = data.checkoutLineItemsReplace.checkout;
         commit('SET_CHECKOUT', checkout);
       });
   },

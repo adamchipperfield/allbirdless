@@ -29,6 +29,11 @@
           <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
 
           <div class="cart-drawer__item-footer">
+            <quantity-selector
+              :defaultQuantity="item.quantity"
+              @quantityChanged="updateQuantity(item.variant.id, $event)"
+            />
+
             <product-price
               class="cart-drawer__item-price"
               :presentmentPrices="item.variant.presentmentPrices"
@@ -64,6 +69,7 @@
 
 <script>
 import ProductPrice from '~/components/ProductPrice';
+import QuantitySelector from '~/components/QuantitySelector';
 
 export default {
   data() {
@@ -73,6 +79,7 @@ export default {
   },
   components: {
     ProductPrice,
+    QuantitySelector,
   },
   mounted() {
     this.$root.$on('cartDrawer:toggle', () => this.toggle());
@@ -86,6 +93,15 @@ export default {
      */
     removeLineItem(id) {
       this.$store.dispatch('removeLineItem', id);
+    },
+
+    /**
+     * Updates the quantity of the line item.
+     * @param {string} variantId - The line item ID.
+     * @param {integer} quantity - The line item quantity.
+     */
+    updateQuantity(variantId, quantity) {
+      this.$store.dispatch('updateLineItemQuantity', { variantId, quantity });
     },
 
     /**

@@ -1,0 +1,21 @@
+/**
+ * Components: Quantity Selector
+ * -----------------------------------------------------------------------------
+ * Displays a quantity selector.
+ */
+.quantity-selector {
+  border: 2px solid $COLOR_BORDER_LIGHT;
+
+  &__button {
+    @include button-reset;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+  }
+
+  &__label {
+    font-size: 0.8rem;
+    font-weight: $WEIGHT_BOLD;
+    vertical-align: middle;
+  }
+}
