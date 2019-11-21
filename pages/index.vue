@@ -33,7 +33,7 @@ export default {
         const componentName = entryId.charAt(0).toUpperCase() + entryId.slice(1);
 
         sections.push({
-          component: async () => await import(`~/components/content/${componentName}.vue`),
+          component: async () => await import(`@/components/content/${componentName}.vue`),
           entry,
         });
       });
