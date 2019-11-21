@@ -135,6 +135,31 @@
     top: 23%;
   }
 
+  &__currency-selector {
+    position: relative;
+
+    select {
+      background-color: transparent;
+      border: 0;
+      padding-right: 1.25rem;
+    }
+
+    &::after {
+      border-bottom: 2px solid $COLOR_BORDER_DARK;
+      border-left: 2px solid $COLOR_BORDER_DARK;
+      content: '';
+      display: inline-block;
+      height: 10px;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(-50%, -75%) rotate(-45deg);
+      transform-origin: top;
+      width: 10px;
+    }
+  }
+
   @include mq($from: medium) {
     &__left {
       display: none;

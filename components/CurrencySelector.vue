@@ -1,10 +1,17 @@
 <template>
   <div class="currency-selector">
-    <label for="CurrencySelector">{{ $t('currencySelector.label') }}</label>
+    <label
+      class="visually-hidden"
+      for="CurrencySelector"
+    >
+      {{ $t('currencySelector.label') }}
+    </label>
+
     <select
       id="CurrencySelector"
       ref="currencySelector"
       :model="$i18n.locale"
+      @change="handleCurrencyChange"
     >
       <option
         v-for="(currency, index) in enabledCurrencies"
