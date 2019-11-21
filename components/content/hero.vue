@@ -5,19 +5,21 @@
       background-image: url('${getImageUrl(this.entry.fields.image)}');
     `"
   >
-    <h2
-      v-if="entry.fields.title"
-      class="hero__title"
-    >
-      {{ entry.fields.title }}
-    </h2>
+    <div class="hero__content">
+      <h2
+        v-if="entry.fields.title"
+        v-html="entry.fields.title"
+        class="hero__title"
+      >
+      </h2>
 
-    <h3
-      v-if="entry.fields.subtitle"
-      class="hero__subtitle"
-    >
-      {{ entry.fields.subtitle }}
-    </h3>
+      <h3
+        v-if="entry.fields.subtitle"
+        class="hero__subtitle"
+      >
+        {{ entry.fields.subtitle }}
+      </h3>
+    </div>
 
     <div class="hero__button-group">
       <a
