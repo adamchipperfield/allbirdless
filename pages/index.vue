@@ -20,6 +20,8 @@ export default {
       include: 2,
     });
 
+    console.log('Entries:', client.items[0].fields.content);
+
     return {
       entries: client.items[0].fields.content,
     }
