@@ -154,6 +154,7 @@ export default {
       })
         .then(() => {
           this.$refs.addToCart.textContent = this.$t('product.form.addToCart');
+          this.$root.$emit('cartDrawer:toggle');
         });
     },
 
