@@ -9,7 +9,6 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  max-width: 480px;
   position: fixed;
   right: 0;
   top: 0;
@@ -126,5 +125,9 @@
 
   &.is-active {
     transform: none;
+  }
+
+  @include mq($from: medium) {
+    max-width: 480px;
   }
 }
