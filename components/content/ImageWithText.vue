@@ -27,13 +27,15 @@
               {{ entry.fields.content }}
             </p>
 
-            <a
-              v-if="entry.fields.button.fields.label"
-              :href="entry.fields.button.fields.url"
-              class="button button--outline"
-            >
-              {{ entry.fields.button.fields.label }}
-            </a>
+            <div v-if="entry.fields.button">
+              <a
+                v-if="entry.fields.button.fields.label"
+                :href="entry.fields.button.fields.url"
+                class="button button--outline"
+              >
+                {{ entry.fields.button.fields.label }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
