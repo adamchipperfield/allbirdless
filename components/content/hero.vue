@@ -19,14 +19,16 @@
       {{ entry.fields.subtitle }}
     </h3>
 
-    <a
-      v-for="(button, index) in buttons"
-      class="button"
-      :key="index"
-      :href="button.fields.url"
-    >
-      {{ button.fields.label }}
-    </a>
+    <div class="hero__button-group">
+      <a
+        v-for="(button, index) in buttons"
+        class="hero__button"
+        :key="index"
+        :href="button.fields.url"
+      >
+        <span class="hero__button-label">{{ button.fields.label }}</span>
+      </a>
+    </div>
   </div>
 </template>
 
