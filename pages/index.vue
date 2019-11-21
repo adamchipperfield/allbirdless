@@ -36,8 +36,11 @@ export default {
           component: async () => await import(`~/components/content/${componentName}.vue`),
           entry,
         });
+
+        console.log('Pushed entry.');
       });
 
+      console.log(sections);
       return sections;
     },
   },
