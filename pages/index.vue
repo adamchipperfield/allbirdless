@@ -20,8 +20,6 @@ export default {
       include: 2,
     });
 
-    console.log('Entries:', client.items[0].fields.content);
-
     return {
       entries: client.items[0].fields.content,
     }
@@ -30,12 +28,12 @@ export default {
     getSections() {
       const sections = [];
 
-      this.entries.forEach(async (entry) => {
+      this.entries.forEach((entry) => {
         const entryId = entry.sys.contentType.sys.id;
         const componentName = entryId.charAt(0).toUpperCase() + entryId.slice(1);
 
         sections.push({
-          component: () => import(`~/components/content/${componentName}.vue`),
+          component: async () => await import(`~/components/content/${componentName}.vue`),
           entry,
         });
       });
