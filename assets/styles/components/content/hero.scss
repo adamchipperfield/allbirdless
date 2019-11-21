@@ -9,7 +9,7 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 64px);
+  height: calc(85vh - 64px);
   justify-content: flex-end;
   padding: 3rem 0;
 
@@ -19,11 +19,11 @@
 
   &__title {
     color: $COLOR_TEXT_SECONDARY;
-    font-size: 3rem;
+    font-size: 1.68rem;
     font-style: italic;
     font-weight: $WEIGHT_SEMIBOLD;
-    line-height: $LINE_HEIGHT_BODY;
-    letter-spacing: $LETTER_SPACING_HEADING;
+    line-height: $LINE_HEIGHT_HEADING;
+    letter-spacing: 0.25rem;
     text-align: center;
     text-transform: uppercase;
     transform: skewY(-5deg);
@@ -31,7 +31,6 @@
 
   &__subtitle {
     color: $COLOR_TEXT_SECONDARY;
-    font-size: 1.5rem;
     font-weight: $WEIGHT_BOLD;
     margin-bottom: 4rem;
     text-align: center;
@@ -39,7 +38,7 @@
 
   &__button-group {
     display: flex;
-    padding: 0 22%;
+    padding: 0 1rem;
     width: 100%;
   }
 
@@ -86,9 +85,25 @@
     text-transform: uppercase;
   }
 
+  @include mq($from: small) {
+    &__title {
+      font-size: 3rem;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+    }
+  }
+
   @include mq($from: medium) {
+    height: calc(100vh - 64px);
+
     &__title {
       font-size: 3.4rem;
+    }
+
+    &__button-group {
+      padding: 0 22%;
     }
   }
 

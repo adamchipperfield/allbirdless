@@ -4,18 +4,20 @@
  * Image with Text section styling.
  */
 .image-with-text {
+  margin: 2rem 0;
+
   &__body {
     align-items: center;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    padding: 0 2rem;
     text-align: center;
   }
 
   &__title {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: $LINE_HEIGHT_HEADING;
     margin: 0 0 1.125rem 0;
   }
 
@@ -31,6 +33,10 @@
   @include mq($from: medium) {
     &__body {
       padding: 3rem 0;
+    }
+
+    &__title {
+      font-size: 2rem;
     }
   }
 }
