@@ -32,6 +32,7 @@
             <quantity-selector
               :defaultQuantity="item.quantity"
               @quantityChanged="updateQuantity(item.variant.id, $event)"
+              @removeItem="removeLineItem(item.id)"
             />
 
             <product-price
