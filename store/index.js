@@ -26,6 +26,13 @@ export const state = () => ({
       edges: [],
     },
   },
+  header: {
+    menu: {
+      fields: {
+        menuItem: [],
+      },
+    },
+  },
   footer: {
     menus: [],
   },
@@ -76,6 +83,15 @@ export const mutations = {
   SET_FOOTER_MENUS(state, menus) {
     state.footer.menus = menus;
   },
+
+  /**
+   * Sets the header menu object.
+   * @param {object} state - The state.
+   * @param {object} menu - The menu.
+   */
+  SET_HEADER_MENU(state, menu) {
+    state.header.menu = menu;
+  },
 };
 
 /**
@@ -93,6 +109,7 @@ export const actions = {
 
     await dispatch('setShopSettings');
     await dispatch('setFooterMenus');
+    await dispatch('setHeaderMenu');
 
     if (!state.connected) {
       await dispatch('createCheckout');
@@ -209,6 +226,21 @@ export const actions = {
     })
       .then((response) => {
         commit('SET_FOOTER_MENUS', response.items[0].fields.menus);
+      });
+  },
+
+  /**
+   * Set the header menu.
+   * @param {object} - The app context.
+   */
+  setHeaderMenu({ commit }) {
+    return contentful.getEntries({
+      'sys.id': '4wFPqeExdvi9URldIEcyXR',
+      content_type: 'navigationMenu',
+      include: 2,
+    })
+      .then((response) => {
+        commit('SET_HEADER_MENU', response.items[0]);
       });
   },
 

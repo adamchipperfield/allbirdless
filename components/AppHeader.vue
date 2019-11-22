@@ -13,15 +13,24 @@
 
     <ul class="app-header__nav">
       <li
-        v-for="(item, index) in menuItems"
+        v-for="(item, index) in $store.state.header.menu.fields.menuItem"
         :key="index"
       >
         <nuxt-link
-          :to="item.url"
+          v-if="item.fields.internalUrl"
+          :to="item.fields.internalUrl"
           class="app-header__link"
         >
-          {{ item.title }}
+          {{ item.fields.label }}
         </nuxt-link>
+
+        <a
+          v-else
+          class="app-header__link"
+          :href="item.fields.url"
+        >
+          {{ item.fields.label }}
+        </a>
       </li>
     </ul>
 
