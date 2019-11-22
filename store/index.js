@@ -1,4 +1,7 @@
 import Cookies from 'js-cookie';
+
+import contentful from '~/plugins/contentful';
+
 import checkoutCreate from '../graphql/mutations/checkoutCreate';
 import checkoutLineItemsAdd from '../graphql/mutations/checkoutLineItemsAdd';
 import checkoutLineItemsRemove from '../graphql/mutations/checkoutLineItemsRemove';
@@ -22,6 +25,9 @@ export const state = () => ({
     lineItems: {
       edges: [],
     },
+  },
+  footer: {
+    menus: [],
   },
   shop: {
     paymentSettings: {
@@ -61,6 +67,15 @@ export const mutations = {
   SET_SHOP_SETTINGS(state, shop) {
     state.shop = shop;
   },
+
+  /**
+   * Sets the footer menus object.
+   * @param {object} state - The state.
+   * @param {object} menus - The menus.
+   */
+  SET_FOOTER_MENUS(state, menus) {
+    state.footer.menus = menus;
+  },
 };
 
 /**
@@ -77,6 +92,7 @@ export const actions = {
     commit('SET_CONNECTED');
 
     await dispatch('setShopSettings');
+    await dispatch('setFooterMenus');
 
     if (!state.connected) {
       await dispatch('createCheckout');
@@ -178,6 +194,21 @@ export const actions = {
       .then(({ data }) => {
         const shop = data.shop;
         commit('SET_SHOP_SETTINGS', shop);
+      });
+  },
+
+  /**
+   * Set the footer menus.
+   * @param {object} - The app context.
+   */
+  setFooterMenus({ commit }) {
+    return contentful.getEntries({
+      'sys.id': '67EsiibMocwXOqzHX3rnkx',
+      content_type: 'menuGroup',
+      include: 2,
+    })
+      .then((response) => {
+        commit('SET_FOOTER_MENUS', response.items[0].fields.menus);
       });
   },
 

@@ -1,0 +1,46 @@
+/**
+ * Components: App Footer
+ * -----------------------------------------------------------------------------
+ * Global footer component.
+ */
+.app-footer {
+  $parent: &;
+  background-color: $COLOR_BACKGROUND_DARK;
+  padding: 3.5rem 0;
+
+  &__menu {
+    @include list-reset;
+    margin-bottom: 3rem;
+    text-align: center;
+
+    li#{$parent}__menu-title {
+      color: $COLOR_TEXT_SECONDARY;
+      display: block;
+      font-size: 0.87rem;
+      font-weight: $WEIGHT_BOLD;
+      margin: 0 0 1.125rem 0;
+      text-transform: uppercase;
+    }
+
+    li#{$parent}__menu-item {
+      color: $COLOR_TEXT_SECONDARY;
+      display: block;
+      font-size: 0.75rem;
+      margin: 0 0 0.75rem 0;
+    }
+  }
+
+  &__copy {
+    color: $COLOR_TEXT_SECONDARY;
+    font-size: 0.75rem;
+    margin: 5rem 0 0;
+    text-align: center;
+  }
+
+  @include mq($from: medium) {
+    &__menu {
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+}
