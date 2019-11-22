@@ -1,6 +1,6 @@
 import createPersistedState from 'vuex-persistedstate'
 
-export default ({ store, app }) => {
+export default ({ store }) => {
   window.onNuxtReady(() => {
     createPersistedState({
       storage: window.sessionStorage,
