@@ -1,14 +1,9 @@
 import createPersistedState from 'vuex-persistedstate'
-import Cookies from 'js-cookie';
 
-export default ({ store }) => {
+export default ({ store, app }) => {
   window.onNuxtReady(() => {
     createPersistedState({
-      storage: {
-        getItem: (key) => Cookies.get(key),
-        setItem: (key, value) => Cookies.set(key, value),
-        removeItem: (key) => Cookies.remove(key),
-      },
+      storage: window.sessionStorage,
     })(store);
 
     store.dispatch('storeRehydrated');
