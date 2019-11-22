@@ -233,15 +233,21 @@ export const actions = {
    */
   updateLineItemQuantity({ state, commit }, { variantId, quantity }) {
     const client = this.app.apolloProvider.defaultClient;
+    const lineItems = state.checkout.lineItems.edges.map((item) => item.node);
+
+    const updateLineItems = lineItems.map((item) => {
+      return {
+        variantId: item.variant.id,
+        quantity:
+          item.variant.id === variantId ? quantity : item.quantity,
+      }
+    });
 
     return client.mutate({
       mutation: checkoutLineItemsReplace,
       variables: {
         checkoutId: state.checkout.id,
-        lineItems: [{
-          variantId,
-          quantity: parseInt(quantity, 10),
-        }],
+        lineItems: updateLineItems,
       },
     })
       .then(({ data }) => {
