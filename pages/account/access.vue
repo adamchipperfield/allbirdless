@@ -1,6 +1,6 @@
 <template>
   <div class="template-access">
-    <div class="template-access__container">
+    <div class="template-access__container container">
       <div class="row">
         <div class="col xs12 m6">
           <form
@@ -9,18 +9,18 @@
           >
             <h2 class="form__title">{{ $t('account.login.title') }}</h2>
 
-            <label for="Email">{{ $t('account.login.email') }}</label>
+            <label for="EmailLogin">{{ $t('account.login.email') }}</label>
             <input
-              ref="emailInput"
-              id="Email"
+              ref="emailInputLogin"
+              id="EmailLogin"
               type="email"
               :autofocus="isLogin"
             >
 
-            <label for="Password">{{ $t('account.login.password') }}</label>
+            <label for="PasswordLogin">{{ $t('account.login.password') }}</label>
             <input
-              ref="passwordInput"
-              id="Password"
+              ref="passwordInputLogin"
+              id="PasswordLogin"
               type="password"
             >
 
@@ -42,18 +42,18 @@
             <p class="form__description">{{ $t('account.register.line_1') }}</p>
             <p class="form__description">{{ $t('account.register.line_2') }}</p>
 
-            <label for="Email">{{ $t('account.register.email') }}</label>
+            <label for="EmailRegister">{{ $t('account.register.email') }}</label>
             <input
-              ref="emailInput"
-              id="Email"
+              ref="emailInputRegister"
+              id="EmailRegister"
               type="email"
               :autofocus="isRegister"
             >
 
-            <label for="Password">{{ $t('account.register.password') }}</label>
+            <label for="PasswordRegister">{{ $t('account.register.password') }}</label>
             <input
-              ref="passwordInput"
-              id="Password"
+              ref="passwordInputRegister"
+              id="PasswordRegister"
               type="password"
             >
 
@@ -81,16 +81,16 @@ export default {
       event.preventDefault();
       
       this.$store.dispatch('loginCustomer', {
-        email: this.$refs.emailInput.value,
-        password: this.$refs.passwordInput.value,
+        email: this.$refs.emailInputLogin.value,
+        password: this.$refs.passwordInputLogin.value,
       });
     },
     handleRegisterSubmit(event) {
       event.preventDefault();
       
       this.$store.dispatch('createCustomer', {
-        email: this.$refs.emailInput.value,
-        password: this.$refs.passwordInput.value,
+        email: this.$refs.emailInputRegister.value,
+        password: this.$refs.passwordInputRegister.value,
       });
     },
   },
@@ -101,6 +101,11 @@ export default {
     isRegister() {
       return this.$router.currentRoute.name === 'register';
     },
+  },
+  mounted() {
+    this.$root.$on('login:failed', () => {
+      console.error('Login failed.');
+    });
   },
 }
 </script>

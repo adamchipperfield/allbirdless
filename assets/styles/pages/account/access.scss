@@ -5,15 +5,22 @@
  */
 .template-access {
   background-color: $COLOR_BACKGROUND_PAMPAS;
-  padding: 14rem 0;
+  padding: 7.5rem 0;
 
-  &__container {
+  &__container.container {
     margin: 0 auto;
     max-width: 980px;
   }
 
+  &__login {
+    margin-bottom: 5rem;
+  }
+
   @include mq($from: medium) {
+    padding: 14rem 0;
+
     &__login {
+      margin-bottom: 0;
       padding-right: 1.5rem;
     }
   

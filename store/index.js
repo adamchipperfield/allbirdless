@@ -360,6 +360,12 @@ export const actions = {
     })
       .then(async ({ data }) => {
         const access = data.customerAccessTokenCreate.customerAccessToken;
+        
+        if (!access) {
+          this.$root.$emit('login:failed');
+          return;
+        }
+
         Cookies.set('access_token', access.accessToken, { expires: new Date(access.expiresAt) });
         dispatch('addCustomerToCheckout', access.accessToken);
         window.location.href = '/account';
