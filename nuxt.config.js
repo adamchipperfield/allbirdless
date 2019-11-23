@@ -89,6 +89,22 @@ export default {
       },
     },
   },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push(
+        {
+          name: 'login',
+          path: '/account/login',
+          component: resolve(__dirname, 'pages/account/access.vue')
+        },
+        {
+          name: 'register',
+          path: '/account/register',
+          component: resolve(__dirname, 'pages/account/access.vue')
+        },
+      );
+    },
+  },
   generate: {
     dir: 'dist',
     fallback: true,
