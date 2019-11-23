@@ -9,7 +9,6 @@
               ref="emailInput"
               id="Email"
               type="email"
-              placeholder="Email Address"
             >
 
             <label for="Password">{{ $t('account.login.password') }}</label>
@@ -17,7 +16,6 @@
               ref="passwordInput"
               id="Password"
               type="password"
-              placeholder="Password"
             >
 
             <button
@@ -35,7 +33,6 @@
               ref="emailInput"
               id="Email"
               type="email"
-              placeholder="Email Address"
             >
 
             <label for="Password">{{ $t('account.register.password') }}</label>
@@ -43,7 +40,6 @@
               ref="passwordInput"
               id="Password"
               type="password"
-              placeholder="Password"
             >
 
             <button

@@ -1,0 +1,18 @@
+/**
+ * Base: Forms
+ * -----------------------------------------------------------------------------
+ * Base styles for form elements.
+ */
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=tel],
+textarea,
+select {
+  background-color: $COLOR_BACKGROUND_WHITE;
+  border: 1px solid $COLOR_BORDER_LIGHT;
+  font-size: 1rem;
+  padding: 1.18rem 1.25rem;
+  width: 100%;
+}
