@@ -42,6 +42,9 @@ export default {
       login: 'Login',
     },
     register: {
+      title: 'Create an account',
+      line_1: 'We never save credit card information.',
+      line_2: 'Registering makes checkout fast and easy and saves your order information in your account.',
       email: 'Email',
       password: 'Password',
       createAccount: 'Create Account',

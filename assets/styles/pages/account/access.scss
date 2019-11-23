@@ -6,4 +6,19 @@
 .template-access {
   background-color: $COLOR_BACKGROUND_PAMPAS;
   padding: 14rem 0;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 980px;
+  }
+
+  @include mq($from: medium) {
+    &__login {
+      padding-right: 1.5rem;
+    }
+  
+    &__register {
+      padding-left: 1.5rem;
+    }
+  }
 }

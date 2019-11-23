@@ -1,9 +1,14 @@
 <template>
   <div class="template-access">
-    <div class="container">
+    <div class="template-access__container">
       <div class="row">
         <div class="col xs12 m6">
-          <form @submit="handleLoginSubmit">
+          <form
+            class="template-access__login form"
+            @submit="handleLoginSubmit"
+          >
+            <h2 class="form__title">{{ $t('account.login.title') }}</h2>
+
             <label for="Email">{{ $t('account.login.email') }}</label>
             <input
               ref="emailInput"
@@ -28,7 +33,15 @@
           </form>
         </div>
         <div class="col xs12 m6">
-          <form @submit="handleRegisterSubmit">
+          <form
+            class="template-access__register form"
+            @submit="handleRegisterSubmit"
+          >
+            <h2 class="form__title">{{ $t('account.register.title') }}</h2>
+
+            <p class="form__description">{{ $t('account.register.line_1') }}</p>
+            <p class="form__description">{{ $t('account.register.line_2') }}</p>
+
             <label for="Email">{{ $t('account.register.email') }}</label>
             <input
               ref="emailInput"
