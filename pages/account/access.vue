@@ -20,7 +20,12 @@
               placeholder="Password"
             >
 
-            <button type="submit">{{ $t('account.login.login') }}</button>
+            <button
+              class="button button--block"
+              type="submit"
+            >
+              {{ $t('account.login.login') }}
+            </button>
           </form>
         </div>
         <div class="col xs12 m6">
@@ -41,7 +46,12 @@
               placeholder="Password"
             >
 
-            <button type="submit">{{ $t('account.register.createAccount') }}</button>
+            <button
+              class="button button--block"
+              type="submit"
+            >
+              {{ $t('account.register.createAccount') }}
+            </button>
           </form>
         </div>
       </div>
