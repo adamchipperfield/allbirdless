@@ -78,7 +78,7 @@ export default {
     },
     manifest: {
       name: 'Allbirds',
-      background_color: 'rgba(255, 255, 255)',
+      background_color: 'rgb(255, 255, 255)',
       icons: [
         {
           src: '~/static/icon.png',
