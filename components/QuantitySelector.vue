@@ -70,5 +70,12 @@ export default {
       this.$emit('quantityChanged', this.quantity);
     },
   },
+  watch: {
+    defaultQuantity: {
+      handler(value) {
+        this.quantity = value;
+      },
+    },
+  },
 }
 </script>
