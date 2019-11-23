@@ -9,6 +9,7 @@
               ref="emailInput"
               id="Email"
               type="email"
+              :autofocus="isLogin"
             >
 
             <label for="Password">{{ $t('account.login.password') }}</label>
@@ -33,6 +34,7 @@
               ref="emailInput"
               id="Email"
               type="email"
+              :autofocus="isRegister"
             >
 
             <label for="Password">{{ $t('account.register.password') }}</label>
@@ -77,6 +79,14 @@ export default {
         email: this.$refs.emailInput.value,
         password: this.$refs.passwordInput.value,
       });
+    },
+  },
+  computed: {
+    isLogin() {
+      return this.$router.currentRoute.name === 'login';
+    },
+    isRegister() {
+      return this.$router.currentRoute.name === 'register';
     },
   },
 }
