@@ -72,6 +72,8 @@ export default {
     },
   ],
   pwa: {
+    name: 'Allbirds',
+    background_color: 'rgba(255, 255, 255)',
     meta: {
       name: 'Allbirds',
       description: 'The world’s most comfortable shoes made from premium natural materials go perfectly with your everyday escapades.',
