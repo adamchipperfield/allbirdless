@@ -78,6 +78,7 @@ export default {
     },
     manifest: {
       name: 'Allbirds',
+      short_name: 'Allbirds',
       background_color: 'rgb(255, 255, 255)',
       icons: [
         {
