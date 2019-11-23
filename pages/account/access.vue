@@ -1,5 +1,5 @@
 <template>
-  <div class="template-login">
+  <div class="template-access">
     <form @submit="handleLoginSubmit">
       <label for="Email">{{ $t('account.login.email') }}</label>
       <input
