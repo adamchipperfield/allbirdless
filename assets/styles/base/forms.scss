@@ -13,6 +13,15 @@ select {
   background-color: $COLOR_BACKGROUND_WHITE;
   border: 1px solid $COLOR_BORDER_LIGHT;
   font-size: 1rem;
+  margin-bottom: 1.18rem;
   padding: 1.18rem 1.25rem;
   width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: $WEIGHT_SEMIBOLD;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
