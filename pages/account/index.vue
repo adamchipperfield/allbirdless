@@ -1,162 +1,182 @@
 <template>
   <div class="template-account">
     <div class="template-account__container container">
-      <h2>{{ $t('account.title') }}</h2>
-      <p @click="handleLogoutClick">{{ $t('account.logout') }}</p>
-
-      <h3>{{ customerHasOrders ? 'Your orders' : $t('account.order.no_orders') }}</h3>
-      <table v-if="customerHasOrders">
-        <thead>
-          <th>{{ $t('account.order.orderNumber') }}</th>
-          <th>{{ $t('account.order.date') }}</th>
-          <th>{{ $t('account.order.products') }}</th>
-          <th>{{ $t('account.order.total') }}</th>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(order, index) in orders"
-            :key="index"
-          >
-            <td>{{ order.orderNumber }}</td>
-            <td>{{ order.processedAt }}</td>
-            <td>
-              <ul>
-                <li
-                  v-for="(lineItem, index) in order.lineItems.edges"
-                  :key="index"
-                >
-                  {{ lineItem.node.title }}
-                </li>
-              </ul>
-            </td>
-            <td>{{ order.totalPriceV2 }}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>{{ customerHasAddresses ? 'Your saved addresses' : $t('account.addresses.no_addresses') }}</h3>
-
-      <button
-        v-show="!addingAddress"
-        @click="handleAddAddressClick($event)"
-      >
-        {{ $t('account.addresses.add') }}
-      </button>
-
-      <form v-show="addingAddress">
-        <div
-          v-for="(field, index) in addressFields"
-          :key="index"
-        >
-          <label :for="field.name">{{ field.label }}</label>
-
-          <select
-            v-if="field.name === 'country'"
-            :name="field.name"
-          >
-            <option
-              v-for="(country, countryIndex) in countryOptions"
-              :key="countryIndex"
-              :value="country"
+      <div class="row">
+        <div class="col xs12">
+          <div class="template-account__header">
+            <h2>{{ $t('account.title') }}</h2>
+            <button
+              class="text-link"
+              @click="handleLogoutClick"
             >
-              {{ getCountryName(country) }}
-            </option>
-          </select>
+              {{ $t('account.logout') }}
+            </button>
+          </div>
+        </div>
+      </div>
 
-          <select
-            v-else-if="field.type === 'select'"
-            :name="field.name"
-          >
-            <option
-              v-for="(option, optionIndex) in field.options"
-              :key="optionIndex"
-              :value="option.value"
-            >
-              {{ option.label }}
-            </option>
-          </select>
-
-          <input
-            v-else
-            :type="field.type"
-            :name="field.name"
-          >
+      <div class="row">
+        <div class="col xs12 m7">
+          <h3>{{ customerHasOrders ? 'Your orders' : $t('account.order.no_orders') }}</h3>
+          <table v-if="customerHasOrders">
+            <thead>
+              <th>{{ $t('account.order.orderNumber') }}</th>
+              <th>{{ $t('account.order.date') }}</th>
+              <th>{{ $t('account.order.products') }}</th>
+              <th>{{ $t('account.order.total') }}</th>
+            </thead>
+            <tbody>
+              <tr
+                v-for="(order, index) in orders"
+                :key="index"
+              >
+                <td>{{ order.orderNumber }}</td>
+                <td>{{ order.processedAt }}</td>
+                <td>
+                  <ul>
+                    <li
+                      v-for="(lineItem, index) in order.lineItems.edges"
+                      :key="index"
+                    >
+                      {{ lineItem.node.title }}
+                    </li>
+                  </ul>
+                </td>
+                <td>{{ order.totalPriceV2 }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <button @click="handleCreateAddressClick($event)">Save</button>
-      </form>
+        <div class="col xs12 m5">
+          <div class="template-account__aside">
+            <h3>{{ customerHasAddresses ? 'Your saved addresses' : $t('account.addresses.no_addresses') }}</h3>
 
-      <div
-        v-for="(address, index) in addresses"
-        :ref="`address-${index}`"
-        :key="index"
-      >
-        <address v-show="!addressIsEditing(index)">
-          <span v-if="address.firstName || address.lastName">
-            {{ address.firstName }} {{ address.lastName }}<br>
-          </span>
-
-          <span
-            v-for="(line, lineIndex) in address.formatted"
-            :key="lineIndex"
-          >
-            {{ line }}<br>
-          </span>
-
-          <span v-if="address.phone">{{ address.phone }}<br></span>
-
-          <button @click="handleEditAddressClick(index)">{{ $t('account.addresses.edit') }}</button>
-          <button @click="handleDeleteAddressClick(index, $event)">{{ $t('account.addresses.delete') }}</button>
-        </address>
-
-        <form v-show="addressIsEditing(index)">
-          <div
-            v-for="(field, index) in addressFields"
-            :key="index"
-          >
-            <label :for="field.name">{{ field.label }}</label>
-
-            <select
-              v-if="field.name === 'country'"
-              :name="field.name"
-              @change="handleAddressFieldChange($event)"
+            <button
+              v-show="!addingAddress"
+              class="text-link"
+              @click="handleAddAddressClick($event)"
             >
-              <option
-                v-for="(country, countryIndex) in countryOptions"
-                :key="countryIndex"
-                :value="country"
+              {{ $t('account.addresses.add') }}
+            </button>
+
+            <form v-show="addingAddress">
+              <div
+                v-for="(field, index) in addressFields"
+                :key="index"
               >
-                {{ getCountryName(country) }}
-              </option>
-            </select>
+                <label :for="field.name">{{ field.label }}</label>
 
-            <select
-              v-else-if="field.type === 'select'"
-              :name="field.name"
-              @change="handleAddressFieldChange($event)"
-            >
-              <option
-                v-for="(option, optionIndex) in field.options"
-                :key="optionIndex"
-                :value="option.value"
-                :selected="address[field.name] === option.value"
-              >
-                {{ option.label }}
-              </option>
-            </select>
+                <select
+                  v-if="field.name === 'country'"
+                  :name="field.name"
+                >
+                  <option
+                    v-for="(country, countryIndex) in countryOptions"
+                    :key="countryIndex"
+                    :value="country"
+                  >
+                    {{ getCountryName(country) }}
+                  </option>
+                </select>
 
-            <input
-              v-else
-              :type="field.type"
-              :name="field.name"
-              :value="address[field.name]"
-              @change="handleAddressFieldChange($event)"
-              @onkeydown="handleAddressFieldChange($event)"
+                <select
+                  v-else-if="field.type === 'select'"
+                  :name="field.name"
+                >
+                  <option
+                    v-for="(option, optionIndex) in field.options"
+                    :key="optionIndex"
+                    :value="option.value"
+                  >
+                    {{ option.label }}
+                  </option>
+                </select>
+
+                <input
+                  v-else
+                  :type="field.type"
+                  :name="field.name"
+                >
+              </div>
+
+              <button @click="handleCreateAddressClick($event)">Save</button>
+            </form>
+
+            <div
+              v-for="(address, index) in addresses"
+              :ref="`address-${index}`"
+              :key="index"
             >
+              <address v-show="!addressIsEditing(index)">
+                <span v-if="address.firstName || address.lastName">
+                  {{ address.firstName }} {{ address.lastName }}<br>
+                </span>
+
+                <span
+                  v-for="(line, lineIndex) in address.formatted"
+                  :key="lineIndex"
+                >
+                  {{ line }}<br>
+                </span>
+
+                <span v-if="address.phone">{{ address.phone }}<br></span>
+
+                <button @click="handleEditAddressClick(index)">{{ $t('account.addresses.edit') }}</button>
+                <button @click="handleDeleteAddressClick(index, $event)">{{ $t('account.addresses.delete') }}</button>
+              </address>
+
+              <form v-show="addressIsEditing(index)">
+                <div
+                  v-for="(field, index) in addressFields"
+                  :key="index"
+                >
+                  <label :for="field.name">{{ field.label }}</label>
+
+                  <select
+                    v-if="field.name === 'country'"
+                    :name="field.name"
+                    @change="handleAddressFieldChange($event)"
+                  >
+                    <option
+                      v-for="(country, countryIndex) in countryOptions"
+                      :key="countryIndex"
+                      :value="country"
+                    >
+                      {{ getCountryName(country) }}
+                    </option>
+                  </select>
+
+                  <select
+                    v-else-if="field.type === 'select'"
+                    :name="field.name"
+                    @change="handleAddressFieldChange($event)"
+                  >
+                    <option
+                      v-for="(option, optionIndex) in field.options"
+                      :key="optionIndex"
+                      :value="option.value"
+                      :selected="address[field.name] === option.value"
+                    >
+                      {{ option.label }}
+                    </option>
+                  </select>
+
+                  <input
+                    v-else
+                    :type="field.type"
+                    :name="field.name"
+                    :value="address[field.name]"
+                    @change="handleAddressFieldChange($event)"
+                    @onkeydown="handleAddressFieldChange($event)"
+                  >
+                </div>
+
+                <button @click="handleSaveAddressClick(index, $event)">{{ $t('account.addresses.save') }}</button>
+              </form>
+            </div>
           </div>
-
-          <button @click="handleSaveAddressClick(index, $event)">{{ $t('account.addresses.save') }}</button>
-        </form>
+        </div>
       </div>
     </div>
   </div>

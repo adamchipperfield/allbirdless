@@ -6,4 +6,9 @@
 .template-account {
   background-color: $COLOR_BACKGROUND_PAMPAS;
   padding: 7.5rem 0;
+
+  &__header {
+    padding: 2rem 0;
+    text-align: center;
+  }
 }

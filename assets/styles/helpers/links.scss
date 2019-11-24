@@ -1,0 +1,13 @@
+/**
+ * Helpers: Links
+ * -----------------------------------------------------------------------------
+ * Helpers for link elements.
+ */
+.text-link {
+  @include button-reset;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: $WEIGHT_SEMIBOLD;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
