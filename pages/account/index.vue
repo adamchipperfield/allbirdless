@@ -1,10 +1,10 @@
 <template>
   <div class="template-account">
     <div class="template-account__container container">
-      <p v-if="customer.firstName">{{ $t('account.welcome').replace('#name#', customer.firstName) }}</p>
+      <h2>{{ $t('account.title') }}</h2>
       <p @click="handleLogoutClick">{{ $t('account.logout') }}</p>
 
-      <h3>{{ customerHasOrders ? 'Your orders' : 'You have no orders.' }}</h3>
+      <h3>{{ customerHasOrders ? 'Your orders' : $t('account.order.no_orders') }}</h3>
       <table v-if="customerHasOrders">
         <thead>
           <th>{{ $t('account.order.orderNumber') }}</th>
@@ -34,7 +34,7 @@
         </tbody>
       </table>
 
-      <h3>{{ customerHasAddresses ? 'Your saved addresses' : 'You have no saved addresses.' }}</h3>
+      <h3>{{ customerHasAddresses ? 'Your saved addresses' : $t('account.addresses.no_addresses') }}</h3>
 
       <button
         v-show="!addingAddress"

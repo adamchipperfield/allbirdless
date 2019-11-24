@@ -26,7 +26,7 @@ export default {
     label: 'Language Selector',
   },
   account: {
-    title: 'Account',
+    title: 'My Account',
     logout: 'Logout',
     welcome: 'Welcome, #name#.',
     order: {
@@ -34,6 +34,7 @@ export default {
       date: 'Date',
       products: 'Products',
       total: 'Total',
+      no_orders: 'You haven\'t placed any orders yet.',
     },
     login: {
       title: 'Login',
@@ -50,7 +51,7 @@ export default {
       createAccount: 'Create Account',
     },
     addresses: {
-      add: 'Add a new address',
+      add: 'Add an address',
       edit: 'Edit',
       delete: 'Delete',
       save: 'Save',
@@ -65,6 +66,7 @@ export default {
       country: 'Country',
       zip: 'Postcode',
       phone: 'Phone',
+      no_addresses: 'You haven\'t added an address yet.'
     },
   },
 }
