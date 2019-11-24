@@ -9,6 +9,7 @@
       <product-form
         class="template-product__form"
         :product="product"
+        :alternates="alternates"
       />
     </div>
 
@@ -30,6 +31,8 @@
 import contentful from '~/plugins/contentful';
 
 import productByHandle from '../../graphql/queries/productByHandle';
+import productsByTag from '../../graphql/queries/productsByTag';
+
 import ProductForm from '../../components/ProductForm';
 import ProductGallery from '../../components/ProductGallery';
 
@@ -50,9 +53,15 @@ export default {
       query: productByHandle,
       variables: { handle: params.handle },
     });
+    
+    const alternateProducts = await client.query({
+      query: productsByTag,
+      variables: { query: 'tag:alias_mens-wool-runners' },
+    });
 
     return {
       product: product.data.productByHandle,
+      alternates: alternateProducts.data.products.edges.map((item) => item.node),
       images: product.data.productByHandle.images.edges.map((item) => item.node),
       content: contentfulClient.items[0].fields.content,
     }

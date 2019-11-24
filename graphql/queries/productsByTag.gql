@@ -1,0 +1,9 @@
+query productsByTag($query: String!) {
+  products(query: $query, first: 100) {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+}
