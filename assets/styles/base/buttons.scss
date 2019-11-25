@@ -10,7 +10,7 @@
   border-radius: 2px;
   color: $COLOR_TEXT_SECONDARY;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.876rem;
   font-weight: $WEIGHT_BOLD;
   letter-spacing: $LETTER_SPACING_LINK;
   line-height: $LINE_HEIGHT_BODY;
@@ -29,9 +29,23 @@
     }
   }
 
+  &#{&}--secondary {
+    background-color: $COLOR_BACKGROUND_LIGHT;
+    border: $COLOR_BACKGROUND_LIGHT;
+    color: $COLOR_TEXT_PRIMARY;
+
+    &:hover {
+      background-color: darken($COLOR_BACKGROUND_LIGHT, 5%);
+    }
+  }
+
   &#{&}--block {
     display: block;
     width: 100%;
+  }
+
+  &#{&}--small {
+    padding: 0.25rem 0.75rem;
   }
 
   &:disabled {

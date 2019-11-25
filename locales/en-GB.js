@@ -9,6 +9,11 @@ export default {
       selectOption: 'Select #option#',
     },
   },
+  collection: {
+    filter: {
+      clear: 'Clear filters',
+    },
+  },
   checkout: {
     title: 'Checkout',
   },

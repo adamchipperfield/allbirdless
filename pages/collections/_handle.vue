@@ -24,6 +24,13 @@
         <div class="col xs12">
           <div class="template-collection__toolbar">
             <div class="template-collection__filter">
+              <button
+                class="button button--small button--secondary"
+                v-if="activeFilters.length"
+              >
+                {{ $t('collection.filter.clear') }}
+              </button>
+
               <div
                 v-for="(filter, index) in filters"
                 :key="index"
