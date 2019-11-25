@@ -19,11 +19,47 @@
       </div>
     </header>
 
+    <div class="template-collection__toolbar">
+      <div class="container">
+        <div class="row">
+          <div class="col xs12 m6"></div>
+          <div class="col xs12 m6">
+            <div class="template-collection__filter">
+              <div
+                v-for="(filter, index) in filters"
+                :key="index"
+              >
+                <div v-if="filter.options.length">
+                  <label :for="`Filter-${filter.name}`">{{ filter.label[$i18n.locale] }}</label>
+
+                  <select
+                    ref="filterSelector"
+                    :id="`Filter-${filter.name}`"
+                    @change="handleFilterChange($event)"
+                  >
+                    <option selected disabled>{{ filter.label[$i18n.locale] }}</option>
+                    <option
+                      v-for="(option, optionIndex) in filter.options"
+                      :key="optionIndex"
+                      :name="option"
+                      :value="`${filter.name}_${option}`"
+                    >
+                      {{ option }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="template-collection__grid">
       <div class="container">
         <div class="row">
           <product-card
-            v-for="(product, index) in products"
+            v-for="(product, index) in productList"
             :key="index"
             :product="product"
             class="col xs6 m4 l3"
@@ -44,6 +80,30 @@ import collectionByHandle from '../../graphql/queries/collectionByHandle';
 import ProductCard from '../../components/ProductCard';
 
 export default {
+  data() {
+    return {
+      activeFilters: [],
+      productList: [],
+      filters: [
+        {
+          name: 'color',
+          label: {
+            'en-GB': 'Color',
+            fr: 'Couleur',
+          },
+          options: [],
+        },
+        {
+          name: 'size',
+          label: {
+            'en-GB': 'Size',
+            fr: 'Taille',
+          },
+          options: [],
+        },
+      ],
+    }
+  },
   components: {
     ProductCard,
   },
@@ -59,6 +119,52 @@ export default {
       collection: collection.data.collectionByHandle,
       products: collection.data.collectionByHandle.products.edges.map((product) => product.node),
     }
+  },
+  created() {
+    this.productList = this.products;
+
+    this.products.forEach((product) => {
+      product.tags.forEach((tag) => {
+        const prefix = tag.split('_')[0];
+        const value = tag.split('_')[1];
+ 
+        if (this.hasFilterGroup(prefix)) {
+          this.filters.forEach((filter) => {
+            if (filter.name === prefix) {
+              filter.options.push(value);
+            }
+          });
+        }
+      });
+    });
+  },
+  methods: {
+
+    /**
+     * Returns if a filter group exists.
+     * @param {string} name - The name.
+     */
+    hasFilterGroup(name) {
+      return this.filters.find((filter) => filter.name === name) ? true : false;
+    },
+
+    /**
+     * Filters the products by a tag.
+     * @param {object} event - The event.
+     */
+    handleFilterChange(event) {
+      this.$refs.filterSelector.forEach((selector) => {
+        if (selector[selector.selectedIndex].disabled) {
+          return;
+        }
+
+        this.activeFilters.push(selector.value);
+      });
+
+      this.productList = this.products.filter((product) => {
+        return this.activeFilters.every((filter) => product.tags.includes(filter));
+      });
+    },
   },
 }
 </script>
