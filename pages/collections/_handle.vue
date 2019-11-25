@@ -91,7 +91,12 @@ export default {
             'en-GB': 'Color',
             fr: 'Couleur',
           },
-          options: [],
+          options: [
+            'Navy',
+            'Green',
+            'White',
+            'Black',
+          ],
         },
         {
           name: 'size',
@@ -99,7 +104,12 @@ export default {
             'en-GB': 'Size',
             fr: 'Taille',
           },
-          options: [],
+          options: [
+            'S',
+            'L',
+            'XL',
+            'XXL',
+          ],
         },
       ],
     }
@@ -122,21 +132,6 @@ export default {
   },
   created() {
     this.productList = this.products;
-
-    this.products.forEach((product) => {
-      product.tags.forEach((tag) => {
-        const prefix = tag.split('_')[0];
-        const value = tag.split('_')[1];
- 
-        if (this.hasFilterGroup(prefix)) {
-          this.filters.forEach((filter) => {
-            if (filter.name === prefix) {
-              filter.options.push(value);
-            }
-          });
-        }
-      });
-    });
   },
   methods: {
 
