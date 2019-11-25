@@ -1,6 +1,6 @@
 <template>
   <div class="app-logo">
-    <nuxt-link to="/">
+    <nuxt-link :to="$getLocalePath('/')">
       <img
         :alt="$store.app.head.title"
         height="38"

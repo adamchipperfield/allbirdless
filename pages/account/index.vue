@@ -272,7 +272,7 @@ export default {
   },
   mounted() {
     if (!this.customer) {
-      this.$router.push('/account/login');
+      this.$router.push($getLocalePath('/account/login'));
     }
   },
   methods: {

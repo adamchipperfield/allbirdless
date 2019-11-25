@@ -1,7 +1,7 @@
 <template>
   <div class="template-error">
     <h1>Something went wrong...</h1>
-    <nuxt-link to="/">Go home</nuxt-link>
+    <nuxt-link :to="$getLocalePath('/')">Go home</nuxt-link>
   </div>
 </template>
 

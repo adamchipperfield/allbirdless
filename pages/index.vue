@@ -14,9 +14,10 @@
 import contentful from '../plugins/contentful';
 
 export default {
-  async asyncData() {
+  async asyncData({ store }) {
     const client = await contentful.getEntries({
       'sys.id': '4o6g6OxJzcJP9bpvk2u1sW',
+      locale: store.state.i18n.locale,
       include: 2,
     });
 

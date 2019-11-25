@@ -49,13 +49,12 @@ export default {
     [
       'nuxt-i18n',
       {
-        locales: ['en', 'fr'],
-        defaultLocale: 'en',
-        strategy: 'no_prefix',
+        locales: ['en-GB', 'fr'],
+        defaultLocale: 'en-GB',
         vueI18n: {
-          fallbackLocale: 'en',
+          fallbackLocale: 'en-GB',
           messages: {
-            en: enGB,
+            "en-GB": enGB,
             fr: frFR,
           },
         },
@@ -69,6 +68,9 @@ export default {
     {
       src: '~/plugins/vuex-persistedstate.js',
       ssr: false,
+    },
+    {
+      src: '~/plugins/get-locale-path.js',
     },
   ],
   pwa: {

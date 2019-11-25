@@ -233,11 +233,12 @@ export const actions = {
    * Set the header menu.
    * @param {object} - The app context.
    */
-  setHeaderMenu({ commit }) {
+  setHeaderMenu({ state, commit }) {
     return contentful.getEntries({
       'sys.id': '4wFPqeExdvi9URldIEcyXR',
       content_type: 'navigationMenu',
       include: 2,
+      locale: state.i18n.locale,
     })
       .then((response) => {
         commit('SET_HEADER_MENU', response.items[0]);
@@ -337,7 +338,7 @@ export const actions = {
       },
     })
       .then(() => {
-        window.location.href = '/account/login';
+        this.$router.push(this.$getLocalePath('/account/login'));
       })
   },
 
@@ -368,7 +369,7 @@ export const actions = {
 
         Cookies.set('access_token', access.accessToken, { expires: new Date(access.expiresAt) });
         dispatch('addCustomerToCheckout', access.accessToken);
-        window.location.href = '/account';
+        this.$router.push(this.$getLocalePath('/account'));
       });
   },
 
@@ -379,7 +380,7 @@ export const actions = {
   logoutCustomer({ dispatch }) {
     dispatch('removeCustomerFromCheckout');
     Cookies.remove('access_token');
-    window.location.href = '/account/login';
+    this.$router.push(this.$getLocalePath('/account/login'));
   },
 
   /**

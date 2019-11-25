@@ -18,7 +18,7 @@
       >
         <nuxt-link
           v-if="item.fields.internalUrl"
-          :to="item.fields.internalUrl"
+          :to="$getLocalePath(item.fields.internalUrl)"
           class="app-header__link"
         >
           {{ item.fields.label }}
@@ -40,13 +40,17 @@
 
     <ul class="app-header__misc">
       <li>
+        <language-selector class="app-header__currency-selector" />
+      </li>
+
+      <li>
         <currency-selector class="app-header__currency-selector" />
       </li>
 
       <li>
         <nuxt-link
           v-if="customerIsLoggedIn"
-          to="/account"
+          :to="$getLocalePath('/account')"
           class="app-header__account"
         >
           <img
@@ -57,7 +61,7 @@
 
         <nuxt-link
           v-else
-          to="/account/login"
+          :to="$getLocalePath('/account/login')"
           class="app-header__account"
         >
           <img
@@ -100,6 +104,7 @@
 <script>
 import AppLogo from './AppLogo';
 import CurrencySelector from './CurrencySelector';
+import LanguageSelector from './LanguageSelector';
 
 export default {
   data() {
@@ -120,6 +125,7 @@ export default {
   components: {
     AppLogo,
     CurrencySelector,
+    LanguageSelector,
   },
   mounted() {
     this.$root.$on('menuDrawer:closed', () => {

@@ -1,6 +1,11 @@
 <template>
   <div class="language-selector">
-    <label for="LanguageSelector">{{ $t('languageSelector.label') }}</label>
+    <label
+      class="visually-hidden"
+      for="LanguageSelector"
+    >
+      {{ $t('languageSelector.label') }}
+    </label>
     <select
       id="LanguageSelector"
       ref="languageSelector"
@@ -27,6 +32,7 @@ export default {
      */
     handleLanguageChange() {
       this.$i18n.setLocale(this.$refs.languageSelector.value);
+      this.$store.dispatch('setHeaderMenu');
     },
   },
   computed: {

@@ -2,7 +2,7 @@
   <div class="product-card">
     <nuxt-link
       class="product-card__thumbnail"
-      :to="`/products/${product.handle}`"
+      :to="$getLocalePath(`/products/${product.handle}`)"
     >
       <img
         v-if="hasImages"
@@ -14,7 +14,7 @@
     <nuxt-link
       v-if="colorName"
       class="product-card__title"
-      :to="`/products/${product.handle}`"
+      :to="$getLocalePath(`/products/${product.handle}`)"
     >
       {{ colorName }}
     </nuxt-link>

@@ -10,7 +10,7 @@
         class="menu-drawer__item"
       >
         <nuxt-link
-          :to="item.url"
+          :to="$getLocalePath(item.url)"
           class="menu-drawer__link menu-drawer__link--primary"
         >
           {{ item.title }}
