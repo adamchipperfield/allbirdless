@@ -105,10 +105,11 @@ export default {
             fr: 'Couleur',
           },
           options: [
-            'Navy',
-            'Green',
-            'White',
+            'Maroon',
+            'Teal',
             'Black',
+            'White',
+            'Grey',
           ],
         },
         {
