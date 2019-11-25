@@ -12,18 +12,18 @@
     </nuxt-link>
 
     <nuxt-link
-      v-if="colorName"
+      v-if="color"
       class="product-card__title"
       :to="$getLocalePath(`/products/${product.handle}`)"
     >
-      {{ colorName }}
+      {{ color }}
     </nuxt-link>
 
     <product-price
       class="product-card__price"
       :presentmentPrices="product.presentmentPriceRanges"
       :currency="$store.state.checkout.currencyCode"
-      :label="product.title"
+      :label="name"
     />
   </div>
 </template>
@@ -49,12 +49,11 @@ export default {
     hasVariants() {
       return this.product.variants.edges.length > 0;
     },
-    colorName() {
-      const tag = this.product.tags.find((tag) => tag.includes('color_'));
-
-      if (tag) {
-        return tag.replace('color_', '');
-      }
+    name() {
+      return this.product.title.split(' - ')[0];
+    },
+    color() {
+      return this.product.title.split(' - ')[1];
     },
   },
 }

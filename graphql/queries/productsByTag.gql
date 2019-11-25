@@ -6,6 +6,7 @@ query productsByTag($query: String!) {
         title
         descriptionHtml
         handle
+        tags
         images(first: 100) {
           edges {
             node {

@@ -71,6 +71,7 @@ export default {
     updateProductObject(data) {
       this.product = data;
       this.images = data.images.edges.map((item) => item.node);
+      history.pushState({}, '', this.$getLocalePath(`/products/${data.handle}`));
     },
   },
   computed: {

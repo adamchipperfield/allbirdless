@@ -1,6 +1,6 @@
 <template>
   <div class="product-form">
-    <h1>{{ product.title }}</h1>
+    <h1>{{ name }}</h1>
 
     <product-price
       class="product-form__price"
@@ -15,6 +15,11 @@
     </div>
 
     <div v-if="alternates.length > 0">
+      <p class="product-form__label">
+        {{ $t('product.form.selectOption').replace('#option#', 'Color') }}:
+        <span class="product-form__label-value">{{ colorName }}</span>
+      </p>
+
       <div class="swatch-grid">
         <div
           v-for="(alternate, index) in alternates"
@@ -23,6 +28,7 @@
         >
           <label
             class="swatch-grid__label"
+            :style="`background-color: ${getProductColor(alternate)}`"
             @click="handleAlternateClick(alternate.id, $event)"
           >
             {{ alternate.handle }}
@@ -276,10 +282,24 @@ export default {
       event.preventDefault();
       this.$emit('product:changed', this.alternates.find((item) => item.id === ID));
     },
+
+    /**
+     * Returns a product's colour.
+     */
+    getProductColor(product) {
+      const found = product.tags.find((tag) => tag.indexOf('color_') !== -1);
+      return found ? found.split('color_')[1] : '';
+    },
   },
   computed: {
     variants() {
       return this.product.variants.edges.map((variant) => variant.node);
+    },
+    name() {
+      return this.product.title.split(' - ')[0];
+    },
+    colorName() {
+      return this.product.title.split(' - ')[1];
     },
   },
   beforeMount() {
