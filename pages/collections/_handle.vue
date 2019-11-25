@@ -153,12 +153,16 @@ export default {
      * @param {object} event - The event.
      */
     handleFilterChange(event) {
+      this.activeFilters = [];
+ 
       this.$refs.filterSelector.forEach((selector) => {
         if (selector[selector.selectedIndex].disabled) {
           return;
         }
 
-        this.activeFilters.push(selector.value);
+        if (this.activeFilters.indexOf(selector.value) === -1) {
+          this.activeFilters.push(selector.value);
+        }
       });
 
       this.productList = this.products.filter((product) => {
