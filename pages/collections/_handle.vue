@@ -19,21 +19,26 @@
       </div>
     </header>
 
-    <div class="template-collection__toolbar">
-      <div class="container">
-        <div class="row">
-          <div class="col xs12 m6"></div>
-          <div class="col xs12 m6">
+    <div class="container">
+      <div class="row">
+        <div class="col xs12">
+          <div class="template-collection__toolbar">
             <div class="template-collection__filter">
               <div
                 v-for="(filter, index) in filters"
                 :key="index"
               >
                 <div v-if="filter.options.length">
-                  <label :for="`Filter-${filter.name}`">{{ filter.label[$i18n.locale] }}</label>
+                  <label
+                    class="visually-hidden"
+                    :for="`Filter-${filter.name}`"
+                  >
+                    {{ filter.label[$i18n.locale] }}
+                  </label>
 
                   <select
                     ref="filterSelector"
+                    class="template-collection__filter-selector"
                     :id="`Filter-${filter.name}`"
                     @change="handleFilterChange($event)"
                   >
