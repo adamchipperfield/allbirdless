@@ -10,6 +10,7 @@
         class="template-product__form"
         :product="product"
         :alternates="alternates"
+        @product:changed="updateProductObject"
       />
     </div>
 
@@ -65,6 +66,12 @@ export default {
       images: product.data.productByHandle.images.edges.map((item) => item.node),
       content: contentfulClient.items[0].fields.content,
     }
+  },
+  methods: {
+    updateProductObject(data) {
+      this.product = data;
+      this.images = data.images.edges.map((item) => item.node);
+    },
   },
   computed: {
     getSections() {

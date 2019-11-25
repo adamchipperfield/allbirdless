@@ -14,6 +14,23 @@
     >
     </div>
 
+    <div v-if="alternates.length > 0">
+      <div class="swatch-grid">
+        <div
+          v-for="(alternate, index) in alternates"
+          class="swatch-grid__item"
+          :key="index"
+        >
+          <label
+            class="swatch-grid__label"
+            @click="handleAlternateClick(alternate.id, $event)"
+          >
+            {{ alternate.handle }}
+          </label>
+        </div>
+      </div>
+    </div>
+
     <div v-if="variants.length > 1">
       <div
         v-for="(option, index) in product.options"
@@ -130,6 +147,7 @@ import ProductPrice from '../components/ProductPrice';
 
 export default {
   props: {
+    alternates: Array,
     product: Object,
   },
   data() {
@@ -247,6 +265,16 @@ export default {
      */
     getOptionValue(option) {
       return this.options[option.name] ? this.options[option.name] : option.values[0];
+    },
+
+    /**
+     * Handles the alternate swatch click event.
+     * @param {string} ID - The alternate product ID.
+     * @param {object} event - The event object.
+     */
+    handleAlternateClick(ID, event) {
+      event.preventDefault();
+      this.$emit('product:changed', this.alternates.find((item) => item.id === ID));
     },
   },
   computed: {
