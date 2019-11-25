@@ -13,6 +13,7 @@ import customerAddressCreate from '../graphql/mutations/customerAddressCreate';
 import customerAddressDelete from '../graphql/mutations/customerAddressDelete';
 import customerAddressUpdate from '../graphql/mutations/customerAddressUpdate';
 import customerCreate from '../graphql/mutations/customerCreate';
+import customerRecover from '../graphql/mutations/customerRecover';
 import getShopSettings from '../graphql/queries/getShopSettings';
 
 /**
@@ -433,6 +434,20 @@ export const actions = {
         customerAccessToken: Cookies.get('access_token'),
         address,
       },
+    });
+  },
+
+  /**
+   * Sends the customer a password recovery email.
+   * @param {object} param0 - The context.
+   * @param {string} email - The email.
+   */
+  submitPasswordReset({}, email) {
+    const client = this.app.apolloProvider.defaultClient;
+
+    return client.mutate({
+      mutation: customerRecover,
+      variables: { email },
     });
   },
 };

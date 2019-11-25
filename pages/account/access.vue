@@ -4,6 +4,7 @@
       <div class="row">
         <div class="col xs12 m6">
           <form
+            v-show="!isResettingPassword"
             class="template-access__login form"
             @submit="handleLoginSubmit"
           >
@@ -30,8 +31,47 @@
             >
               {{ $t('account.login.login') }}
             </button>
+
+            <button
+              class="template-access__reset-toggle text-link"
+              type="button"
+              @click="togglePasswordReset($event)"
+            >
+              {{ $t('account.login.reset_password') }}
+            </button>
+          </form>
+
+          <form
+            v-show="isResettingPassword"
+            class="template-access__login form"
+            @submit="handlePasswordResetSubmit"
+          >
+            <h2 class="form__title">{{ $t('account.login.reset_password') }}</h2>
+
+            <label for="EmailPasswordReset">{{ $t('account.login.email') }}</label>
+            <input
+              ref="emailInputPasswordReset"
+              id="EmailPasswordReset"
+              type="email"
+            >
+
+            <button
+              class="button button--block"
+              type="submit"
+            >
+              {{ $t('account.login.submit_reset_password') }}
+            </button>
+
+            <button
+              class="template-access__reset-toggle text-link"
+              type="button"
+              @click="togglePasswordReset($event)"
+            >
+              {{ $t('account.login.close_reset_password') }}
+            </button>
           </form>
         </div>
+
         <div class="col xs12 m6">
           <form
             class="template-access__register form"
@@ -76,7 +116,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isResettingPassword: false,
+    }
+  },
   methods: {
+
+    /**
+     * Handles the login submit event.
+     * @param {object} event - The event.
+     */
     handleLoginSubmit(event) {
       event.preventDefault();
       
@@ -85,6 +135,11 @@ export default {
         password: this.$refs.passwordInputLogin.value,
       });
     },
+
+    /**
+     * Handles the register submit event.
+     * @param {object} event - The event.
+     */
     handleRegisterSubmit(event) {
       event.preventDefault();
       
@@ -92,6 +147,34 @@ export default {
         email: this.$refs.emailInputRegister.value,
         password: this.$refs.passwordInputRegister.value,
       });
+    },
+
+    /**
+     * Toggles the password reset form.
+     * @param {object} event - The event.
+     */
+    togglePasswordReset(event) {
+      event.preventDefault();
+      this.isResettingPassword = this.isResettingPassword ? false : true;
+    },
+
+    /**
+     * Handles the password reset submit event.
+     * @param {object} event - The event.
+     */
+    handlePasswordResetSubmit(event) {
+      const input = this.$refs.emailInputPasswordReset;
+      event.preventDefault();
+
+      input.textContent = this.$t('account.login.resetting_password');
+
+      this.$store.dispatch('submitPasswordReset', input.value)
+        .then(({ data }) => {
+          if (data.customerRecover.userErrors.length === 0) {
+            input.textContent = this.$t('account.login.sent_reset_password');
+            event.target.reset();
+          }
+        });
     },
   },
   computed: {

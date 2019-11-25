@@ -16,6 +16,15 @@
     margin-bottom: 5rem;
   }
 
+  &__reset-toggle {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .button {
+    margin-bottom: 1rem;
+  }
+
   @include mq($from: medium) {
     padding: 14rem 0;
 

@@ -41,6 +41,11 @@ export default {
       email: 'Email',
       password: 'Password',
       login: 'Login',
+      reset_password: 'Forgot password',
+      resetting_password: 'Working...',
+      sent_reset_password: 'Recovery email sent',
+      submit_reset_password: 'Reset password',
+      close_reset_password: 'Login',
     },
     register: {
       title: 'Create an account',
