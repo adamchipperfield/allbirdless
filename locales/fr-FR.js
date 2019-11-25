@@ -7,4 +7,9 @@ export default {
       total: 'Montant total',
     },
   },
+  collection: {
+    filter: {
+      clear: 'Effacer les filtres',
+    },
+  },
 }

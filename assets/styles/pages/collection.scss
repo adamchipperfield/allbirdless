@@ -42,13 +42,21 @@
     align-items: center;
     display: flex;
     justify-content: flex-end;
+    overflow: auto;
+    white-space: nowrap;
   }
 
   &__filter-selector {
     border: 0;
     font-size: 0.85rem;
     font-weight: $WEIGHT_BOLD;
-    padding: 0 1rem;
+    min-height: 30px;
+    padding: 0.25rem 0.75rem;
+    vertical-align: middle;
+  }
+
+  &__filter-clear {
+    margin-right: 1rem;
   }
 
   @include mq($from: medium) {

@@ -25,8 +25,9 @@
           <div class="template-collection__toolbar">
             <div class="template-collection__filter">
               <button
-                class="button button--small button--secondary"
+                class="template-collection__filter-clear button button--small button--secondary"
                 v-if="activeFilters.length"
+                @click="clearActiveFilters"
               >
                 {{ $t('collection.filter.clear') }}
               </button>
@@ -175,6 +176,15 @@ export default {
       this.productList = this.products.filter((product) => {
         return this.activeFilters.every((filter) => product.tags.includes(filter));
       });
+    },
+
+    /**
+     * Clears the active filters
+     */
+    clearActiveFilters() {
+      this.activeFilters = [];
+      this.productList = this.products;
+      this.$refs.filterSelector.forEach((selector) => selector.selectedIndex = 0);
     },
   },
 }
