@@ -42,5 +42,10 @@ export default {
       return sections;
     },
   },
+  head() {
+    return {
+      title: 'The World’s Most Comfortable Shoes – Allbirds',
+    }
+  },
 }
 </script>

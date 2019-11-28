@@ -188,5 +188,10 @@ export default {
       this.$refs.filterSelector.forEach((selector) => selector.selectedIndex = 0);
     },
   },
+  head() {
+    return {
+      title: this.collection.title,
+    }
+  },
 }
 </script>

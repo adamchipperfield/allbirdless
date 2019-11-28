@@ -91,5 +91,10 @@ export default {
       return sections;
     },
   },
+  head() {
+    return {
+      title: this.product.title,
+    }
+  },
 }
 </script>
