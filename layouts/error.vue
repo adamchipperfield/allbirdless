@@ -1,9 +1,20 @@
 <template>
   <div class="template-error">
-    <h1>Something went wrong...</h1>
-    <nuxt-link :to="$getLocalePath('/')">Go home</nuxt-link>
+    <h1 class="template-error__title">{{ $t('error.title') }}</h1>
+    <p class="template-error__subtitle">{{ $t('error.subtitle') }}</p>
+
+    <nuxt-link
+      class="template-error__link"
+      :to="$getLocalePath('/')"
+    >
+      {{ $t('error.link_label') }}
+    </nuxt-link>
   </div>
 </template>
+
+<style lang="scss">
+@import '~/assets/styles/layouts/error';
+</style>
 
 <script>
 export default {

@@ -1,0 +1,32 @@
+/**
+ * Layout: Error
+ * -----------------------------------------------------------------------------
+ * Error (404) page for no route found.
+ */
+.template-error {
+  background-color: $COLOR_BACKGROUND_PAMPAS;
+  padding: 7.5rem 0;
+  text-align: center;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: $WEIGHT_BOLD;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    margin: 0;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 1.8rem;
+    text-decoration: underline;
+  }
+
+  @include mq($from: medium) {
+    padding: 13.75rem 0;
+  }
+}

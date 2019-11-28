@@ -79,4 +79,9 @@ export default {
       no_addresses: 'You haven\'t added an address yet.'
     },
   },
+  error: {
+    title: 'Uh-oh, nothing to see here!',
+    subtitle: 'The page you requested does not exist.',
+    link_label: 'Go Home',
+  },
 }
