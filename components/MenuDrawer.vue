@@ -72,7 +72,7 @@ export default {
   },
   watch: {
     $route() {
-      this.close();
+      setTimeout(() => this.close(), 50);
     },
   },
 }
