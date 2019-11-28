@@ -131,18 +131,23 @@ export default {
   components: {
     ProductCard,
   },
-  async asyncData({app, params}) {
+  async asyncData({app, params, error}) {
     const client = app.apolloProvider.defaultClient;
 
-    const collection = await client.query({
+    return await client.query({
       query: collectionByHandle,
       variables: { handle: params.handle },
-    });
+    })
+      .then((response) => {
+        if (response.data.collectionByHandle) {
+          return {
+            collection: response.data.collectionByHandle,
+            products: response.data.collectionByHandle.products.edges.map((product) => product.node),
+          }
+        }
 
-    return {
-      collection: collection.data.collectionByHandle,
-      products: collection.data.collectionByHandle.products.edges.map((product) => product.node),
-    }
+        error({ statusCode: 404 });
+      });
   },
   created() {
     this.productList = this.products;
