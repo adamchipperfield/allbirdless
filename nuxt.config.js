@@ -30,6 +30,7 @@ export default {
     ],
     link: [
       { rel: 'preconnect', href: storeUrl },
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
     ],
   },
   styleResources: {
