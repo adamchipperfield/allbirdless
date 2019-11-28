@@ -22,14 +22,27 @@
     </div>
 
     <div class="hero__button-group">
-      <a
+      <div
         v-for="(button, index) in buttons"
         class="hero__button"
         :key="index"
-        :href="button.fields.url"
       >
-        <span class="hero__button-label">{{ button.fields.label }}</span>
-      </a>
+        <nuxt-link
+          v-if="button.fields.internalUrl"
+          class="hero__button-label"
+          :to="$getLocalePath(button.fields.internalUrl)"
+        >
+          <span>{{ button.fields.label }}</span>
+        </nuxt-link>
+
+        <a
+          v-else
+          class="hero__button-label"
+          :href="button.fields.url"
+        >
+          <span>{{ button.fields.label }}</span>
+        </a>
+      </div>
     </div>
   </div>
 </template>
