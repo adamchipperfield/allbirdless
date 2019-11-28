@@ -6,8 +6,11 @@
 @include animation-pulse;
 
 .loading-screen {
+  align-items: center;
   background-color: $COLOR_BACKGROUND_WHITE;
+  display: flex;
   height: 100%;
+  justify-content: center;
   left: 0;
   opacity: 0;
   position: fixed;
@@ -20,10 +23,6 @@
   &__icon {
     animation: pulse 3s ease infinite;
     height: 50px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: 50px;
   }
 
