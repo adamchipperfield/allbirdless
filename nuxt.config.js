@@ -68,13 +68,9 @@ export default {
     ],
   ],
   plugins: [
-    {
-      src: '~/plugins/vuex-persistedstate.js',
-      ssr: false,
-    },
-    {
-      src: '~/plugins/get-locale-path.js',
-    },
+    { src: '~/plugins/vuex-persistedstate.js', ssr: false },
+    { src: '~/plugins/get-locale-path.js' },
+    { src: '~/plugins/vue-lazyload.js' },
   ],
   pwa: {
     meta: {

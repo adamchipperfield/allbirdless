@@ -5,8 +5,8 @@
         <div class="col xs12 m6">
           <img
             v-if="entry.fields.image"
+            v-lazy="getImageUrl(entry.fields.image)"
             :alt="entry.fields.image.fields.title"
-            :src="getImageUrl(entry.fields.image)"
             class="image-with-text__image"
           >
         </div>

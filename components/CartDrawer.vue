@@ -20,7 +20,7 @@
       >
         <img
           v-if="item.variant.image"
-          :src="item.variant.image.transformedSrc"
+          v-lazy="item.variant.image.transformedSrc"
           :alt="item.title"
         >
 

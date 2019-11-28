@@ -7,3 +7,15 @@
 .visually-hidden {
   @include visually-hidden;
 }
+
+[lazy] {
+  transition: opacity 0.3s ease;
+}
+
+[lazy=loading] {
+  opacity: 0;
+}
+
+[lazy=loaded] {
+  opacity: 1;
+}

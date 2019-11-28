@@ -2,9 +2,9 @@
   <div class="product-gallery">
     <img
       v-for="(image, index) in images"
+      v-lazy="image.transformedSrc"
       :key="index"
       :alt="image.altText"
-      :src="image.transformedSrc"
     >
   </div>
 </template>

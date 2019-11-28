@@ -6,8 +6,8 @@
     >
       <img
         v-if="hasImages"
+        v-lazy="product.images.edges[0].node.transformedSrc"
         :alt="[ product.images.edges[0].node.altText ? product.images.edges[0].node.altText : product.title ]"
-        :src="product.images.edges[0].node.transformedSrc"
       >
     </nuxt-link>
 

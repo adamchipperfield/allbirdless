@@ -3,7 +3,7 @@
     <header class="template-collection__header">
       <div
         class="template-collection__image"
-        :style="`background-image: url('${collection.image.originalSrc}')`"
+        v-lazy:background-image="collection.image.originalSrc"
       >
       </div>
 
