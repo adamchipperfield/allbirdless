@@ -81,6 +81,7 @@ export default {
       name: 'Allbirds',
       short_name: 'Allbirds',
       background_color: 'rgb(255, 255, 255)',
+      theme_color: 'rgb(255, 255, 255)',
       icons: [
         {
           src: '~/static/icon.png',
