@@ -40,8 +40,10 @@ export default {
       '@/assets/styles/config/fonts.scss',
       '@/assets/styles/config/colors.scss',
       '@/assets/styles/config/typography.scss',
+      '@/assets/styles/helpers/animations.scss',
     ],
   },
+  loading: '~/components/LoadingScreen.vue',
   modules: [
     '@nuxtjs/apollo',
     '@nuxtjs/pwa',
