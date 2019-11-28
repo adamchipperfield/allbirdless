@@ -23,7 +23,7 @@ export default {
     finish() {
       setTimeout(() => {
         this.loading = false;
-      }, 250);
+      }, 750);
     },
   },
 }
