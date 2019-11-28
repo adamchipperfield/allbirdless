@@ -159,4 +159,11 @@ export default {
         .catch((error) => error);
     },
   },
+  render: {
+    bundleRenderer: {
+      shouldPreload: (type) => {
+        return ['script', 'style', 'font'].includes(type);
+      },
+    },
+  },
 }
