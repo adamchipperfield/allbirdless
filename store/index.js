@@ -219,11 +219,12 @@ export const actions = {
    * Set the footer menus.
    * @param {object} - The app context.
    */
-  setFooterMenus({ commit }) {
+  setFooterMenus({ state, commit }) {
     return contentful.getEntries({
       'sys.id': '67EsiibMocwXOqzHX3rnkx',
       content_type: 'menuGroup',
       include: 2,
+      locale: state.i18n.locale,
     })
       .then((response) => {
         commit('SET_FOOTER_MENUS', response.items[0].fields.menus);

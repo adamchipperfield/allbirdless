@@ -14,7 +14,19 @@
               class="app-footer__menu-item"
               :key="menuItemIndex"
             >
-              <a :href="menuItem.fields.url">{{ menuItem.fields.label }}</a>
+              <nuxt-link
+                v-if="menuItem.fields.internalUrl"
+                :to="$getLocalePath(menuItem.fields.internalUrl)"
+              >
+                {{ menuItem.fields.label }}
+              </nuxt-link>
+
+              <a
+                v-else
+                :href="menuItem.fields.url"
+              >
+                {{ menuItem.fields.label }}
+              </a>
             </li>
           </ul>
         </div>
