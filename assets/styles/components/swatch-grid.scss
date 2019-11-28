@@ -6,6 +6,7 @@
 .swatch-grid {
   $parent: &;
   display: flex;
+  flex-wrap: wrap;
   margin: 1.75rem 0;
 
   &__item {
