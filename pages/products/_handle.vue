@@ -42,30 +42,48 @@ export default {
     ProductForm,
     ProductGallery,
   },
-  async asyncData({ app, params, store }) {
+  async asyncData({ app, params, store, error }) {
     const client = app.apolloProvider.defaultClient;
+    const data = {};
 
-    const contentfulClient = await contentful.getEntries({
-      'fields.productHandle': 'mens-wool-runners',
-      content_type: 'product',
-    });
-
-    const product = await client.query({
+    await client.query({
       query: productByHandle,
       variables: { handle: params.handle },
-    });
+    })
+      .then((response) => {
+        const product = response.data.productByHandle;
+
+        if (!response.data.productByHandle) {
+          return error({ statusCode: 404 });
+        }
+
+        data.product = product;
+        data.images = product.images.edges.map((item) => item.node);
+      });
+
+    await contentful.getEntries({
+      'fields.productHandle': 'mens-wool-runners',
+      content_type: 'product',
+    })
+      .then((response) => {
+        if (response) {
+          data.content = response.items[0].fields.content;
+        }
+      });
     
-    const alternateProducts = await client.query({
+    await client.query({
       query: productsByTag,
       variables: { query: 'tag:alias_mens-wool-runners' },
-    });
+    })
+      .then((response) => {
+        const products = response.data.products;
 
-    return {
-      product: product.data.productByHandle,
-      alternates: alternateProducts.data.products.edges.map((item) => item.node),
-      images: product.data.productByHandle.images.edges.map((item) => item.node),
-      content: contentfulClient.items[0].fields.content,
-    }
+        if (products) {
+          data.alternates = products.edges.map((item) => item.node);
+        }
+      });
+
+    return data;
   },
   methods: {
     updateProductObject(data) {
