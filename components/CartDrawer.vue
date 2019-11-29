@@ -9,7 +9,7 @@
           class="cart-drawer__close"
           @click="close"
         >
-          <span class="visually-hidden">Close cart drawer</span>
+          <span class="visually-hidden">{{ $t('cartDrawer.close') }}</span>
         </button>
       </div>
 
@@ -58,12 +58,12 @@
     >
       <div class="cart-drawer__summary">
         <div class="cart-drawer__total">
-          <span class="cart-drawer__total-label">Subtotal</span>
+          <span class="cart-drawer__total-label">{{ $t('cartDrawer.subtotal') }}</span>
           <span class="cart-drawer__total-value">{{ checkoutSubtotal }}</span>
         </div>
 
         <div class="cart-drawer__total">
-          <span class="cart-drawer__total-label">Shipping</span>
+          <span class="cart-drawer__total-label">{{ $t('cartDrawer.shipping') }}</span>
           <span class="cart-drawer__total-value">FREE</span>
         </div>
       </div>

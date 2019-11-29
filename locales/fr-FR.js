@@ -19,7 +19,10 @@ export default {
   },
   cartDrawer: {
     title: 'Tiroir de chariot',
+    close: 'Fermer le tiroir du chariot',
     checkout: 'Commander en toute sécurité',
+    subtotal: 'Total',
+    shipping: 'Livraison',
     lineItems: {
       remove: 'Retirer',
     },

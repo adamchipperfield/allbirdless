@@ -19,6 +19,9 @@ export default {
   },
   cartDrawer: {
     title: 'Cart Drawer',
+    close: 'Close cart drawer',
+    subtotal: 'Subtotal',
+    shipping: 'Shipping',
     checkout: 'Checkout Securely',
     lineItems: {
       remove: 'Remove',
