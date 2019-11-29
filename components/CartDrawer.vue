@@ -11,6 +11,24 @@
         >
           <span class="visually-hidden">{{ $t('cartDrawer.close') }}</span>
         </button>
+
+        <span class="cart-drawer__count">
+          <img
+            v-show="checkoutCount === 0"
+            alt="Cart count"
+            src="~/assets/icons/icon-cart.svg"
+          >
+
+          <img
+            v-show="checkoutCount > 0"
+            alt="Cart count"
+            src="~/assets/icons/icon-cart-filled.svg"
+          >
+
+          <span class="cart-drawer__count-value">
+            {{ checkoutCount }}
+          </span>
+        </span>
       </div>
 
       <div
@@ -155,6 +173,9 @@ export default {
       }
 
       return new Intl.NumberFormat('en-GB', { style: 'currency', currency: subtotal.currencyCode }).format(subtotal.amount);
+    },
+    checkoutCount() {
+      return this.$store.state.checkout ? this.$store.state.checkout.lineItems.edges.length : 0;
     },
     lineItems() {
       return this.$store.state.checkout ? this.$store.state.checkout.lineItems.edges.map((item) => item.node) : [];

@@ -17,6 +17,12 @@
   width: 100%;
   z-index: 18;
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+
   &__body {
     flex: 1;
     overflow-y: auto;
@@ -58,6 +64,20 @@
       transform-origin: top;
       width: 15px;
     }
+  }
+
+  &__count {
+    display: inline-block;
+    position: relative;
+    transform: translateX(50%);
+  }
+
+  &__count-value {
+    font-size: 0.75rem;
+    font-weight: $WEIGHT_BOLD;
+    left: 50%;
+    position: absolute;
+    top: 23%;
   }
 
   &__item {
