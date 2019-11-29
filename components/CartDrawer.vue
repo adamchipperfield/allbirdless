@@ -39,6 +39,7 @@
           class="cart-drawer__button button button--outline"
           :to="$getLocalePath(item.fields.internalUrl)"
           :key="index"
+          @click.native="handleLinkClick"
         >
           {{ item.fields.label }}
         </nuxt-link>
@@ -132,6 +133,13 @@ export default {
     this.$root.$on('windowOverlay:click', () => this.close());
   },
   methods: {
+
+    /**
+     * Handles the link click event.
+     */
+    handleLinkClick() {
+      this.close();
+    },
 
     /**
      * Removes the line item.
