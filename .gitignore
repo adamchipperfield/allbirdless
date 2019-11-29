@@ -4,3 +4,4 @@ dist
 .nuxt
 .env
 static/sw.js
+OneSignalSDK*

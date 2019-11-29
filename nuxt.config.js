@@ -46,6 +46,7 @@ export default {
   loading: '~/components/LoadingScreen.vue',
   modules: [
     '@nuxtjs/apollo',
+    '@nuxtjs/onesignal',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     'cookie-universal-nuxt',
@@ -72,6 +73,12 @@ export default {
     { src: '~/plugins/get-locale-path.js' },
     { src: '~/plugins/vue-lazyload.js' },
   ],
+  oneSignal: {
+    init: {
+      appId: '7f1b113f-0619-44c5-a28d-fab0378831e6',
+      allowLocalhostAsSecureOrigin: true,
+    },
+  },
   pwa: {
     meta: {
       name: 'Allbirds',

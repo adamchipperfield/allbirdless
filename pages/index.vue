@@ -25,6 +25,11 @@ export default {
       entries: client.items[0].fields.content,
     }
   },
+  mounted() {
+    this.$OneSignal.push(() => {
+      this.$OneSignal.showNativePrompt();
+    });
+  },
   computed: {
     getSections() {
       const sections = [];
