@@ -37,6 +37,13 @@ export const state = () => ({
   footer: {
     menus: [],
   },
+  cartDrawer: {
+    menu: {
+      fields: {
+        menuItem: [],
+      },
+    },
+  },
   shop: {
     paymentSettings: {
       enabledCurrencies: [],
@@ -93,6 +100,16 @@ export const mutations = {
   SET_HEADER_MENU(state, menu) {
     state.header.menu = menu;
   },
+
+  /**
+   * Sets the cart drawer menu object.
+   * @param {object} state - The state.
+   * @param {object} menu - The menu.
+   */
+  SET_CART_DRAWER_MENU(state, menu) {
+    console.log(menu);
+    state.cartDrawer.menu = menu;
+  },
 };
 
 /**
@@ -111,6 +128,7 @@ export const actions = {
     await dispatch('setShopSettings');
     await dispatch('setFooterMenus');
     await dispatch('setHeaderMenu');
+    await dispatch('setCartDrawerMenu');
 
     if (!state.connected) {
       await dispatch('createCheckout');
@@ -244,6 +262,22 @@ export const actions = {
     })
       .then((response) => {
         commit('SET_HEADER_MENU', response.items[0]);
+      });
+  },
+
+  /**
+   * Set the cart drawer menu.
+   * @param {object} - The app context.
+   */
+  setCartDrawerMenu({ state, commit }) {
+    return contentful.getEntries({
+      'sys.id': '5kcCowWCgCwkRttoPew12G',
+      content_type: 'navigationMenu',
+      include: 2,
+      locale: state.i18n.locale,
+    })
+      .then((response) => {
+        commit('SET_CART_DRAWER_MENU', response.items[0]);
       });
   },
 

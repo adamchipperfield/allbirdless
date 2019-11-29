@@ -31,12 +31,18 @@
         </span>
       </div>
 
-      <p
-        v-if="checkoutCount === 0"
-        class="cart-drawer__empty"
-      >
-        {{ $t('cartDrawer.empty') }}
-      </p>
+      <div v-if="checkoutCount === 0">
+        <p class="cart-drawer__empty">{{ $t('cartDrawer.empty') }}</p>
+
+        <nuxt-link
+          v-for="(item, index) in $store.state.cartDrawer.menu.fields.menuItem"
+          class="cart-drawer__button button button--outline"
+          :to="$getLocalePath(item.fields.internalUrl)"
+          :key="index"
+        >
+          {{ item.fields.label }}
+        </nuxt-link>
+      </div>
 
       <div
         v-for="(item, index) in lineItems"
