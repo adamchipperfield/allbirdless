@@ -27,6 +27,9 @@ export default {
       remove: 'Remove',
     },
   },
+  menuDrawer: {
+    toggle: 'Toggle menu drawer',
+  },
   currencySelector: {
     label: 'Currency Selector',
   },

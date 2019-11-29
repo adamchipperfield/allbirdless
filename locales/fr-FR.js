@@ -27,6 +27,9 @@ export default {
       remove: 'Retirer',
     },
   },
+  menuDrawer: {
+    toggle: 'Basculer le tiroir de menu',
+  },
   currencySelector: {
     label: 'Sélecteur de devise',
   },

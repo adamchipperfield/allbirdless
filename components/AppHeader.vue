@@ -7,7 +7,7 @@
         :class="{ 'is-active': menuDrawerActive }"
         @click="handleMenuToggleClick"
       >
-        <span class="visually-hidden">Toggle menu drawer</span>
+        <span class="visually-hidden">{{ $t('menuDrawer.toggle') }}</span>
       </button>
     </div>
 
