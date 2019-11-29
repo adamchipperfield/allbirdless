@@ -17,6 +17,7 @@ dotenv.config();
  */
 const storeUrl = `https://${process.env.SHOPIFY_STORE}`;
 const storeAccess = process.env.SHOPIFY_ACCESS;
+const oneSignalId = process.env.ONESIGNAL_ID;
 
 /**
  * Nuxt.js configuration.
@@ -75,7 +76,7 @@ export default {
   ],
   oneSignal: {
     init: {
-      appId: '7f1b113f-0619-44c5-a28d-fab0378831e6',
+      appId: oneSignalId,
       allowLocalhostAsSecureOrigin: true,
     },
   },
