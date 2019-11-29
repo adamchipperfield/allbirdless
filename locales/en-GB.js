@@ -23,6 +23,7 @@ export default {
     subtotal: 'Subtotal',
     shipping: 'Shipping',
     checkout: 'Checkout Securely',
+    empty: 'Your Cart is Empty',
     lineItems: {
       remove: 'Remove',
     },

@@ -80,6 +80,12 @@
     top: 23%;
   }
 
+  &__empty {
+    font-weight: $WEIGHT_SEMIBOLD;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
   &__item {
     display: flex;
     margin: 1.5rem 0;

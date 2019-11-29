@@ -31,6 +31,13 @@
         </span>
       </div>
 
+      <p
+        v-if="checkoutCount === 0"
+        class="cart-drawer__empty"
+      >
+        {{ $t('cartDrawer.empty') }}
+      </p>
+
       <div
         v-for="(item, index) in lineItems"
         :key="index"

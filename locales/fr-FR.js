@@ -23,6 +23,7 @@ export default {
     checkout: 'Commander en toute sécurité',
     subtotal: 'Total',
     shipping: 'Livraison',
+    empty: 'Votre panier est vide',
     lineItems: {
       remove: 'Retirer',
     },
