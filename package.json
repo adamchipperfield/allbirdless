@@ -18,7 +18,7 @@
     "dotenv": "^8.2.0",
     "js-cookie": "^2.2.1",
     "node-fetch": "^2.6.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.10.2",
     "nuxt-i18n": "^6.3.1",
     "sass-loader": "^8.0.0",
