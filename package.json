@@ -17,7 +17,7 @@
     "country-list": "^2.2.0",
     "dotenv": "^8.2.0",
     "js-cookie": "^2.2.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.13.0",
     "nuxt": "^2.10.2",
     "nuxt-i18n": "^6.3.1",
